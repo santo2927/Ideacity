@@ -1,4 +1,4 @@
-package com.example.ideality.data.model;
+package com.example.prueba2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
