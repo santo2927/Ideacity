@@ -1,11 +1,7 @@
 package com.example.prueba2;
 
 import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
 
-import com.example.prueba2.R;
 
 public class Gestor {
 
