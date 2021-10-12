@@ -4,6 +4,7 @@ package com.example.prueba2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,13 +21,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         botones();
         Button conf = (Button) findViewById(R.id.btnConfDatos);
-        act=this;
         conf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (comprobacionDatos()){
-                    Gestor g = new Gestor(act);
-                    g.start();
+                    Intent i = new Intent(MainActivity.this, GestorIdeas.class);
+                    startActivity(i);
                 }else{
                     findViewById(R.id.txtError).setVisibility(View.VISIBLE);
                 }

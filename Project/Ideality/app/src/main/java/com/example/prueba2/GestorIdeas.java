@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,12 +23,12 @@ public class GestorIdeas extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        
-        //Barra de herramientas
+        setContentView(R.layout.activity_gestor);
+
+       //Barra de herramientas
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        //fin barra        
+        //fin barra
 
         //RECYCLE VIEW
         recycler = (RecyclerView) findViewById(R.id.RecycleId);
@@ -42,8 +44,9 @@ public class GestorIdeas extends AppCompatActivity {
         //FIN RECYCLE
     }
 
+
     //MENU
-    @Override
+    // @Override
     public boolean onCreateOptionsMenu (Menu mimenu) {
         getMenuInflater().inflate(R.menu.menu, mimenu);
         return true;
