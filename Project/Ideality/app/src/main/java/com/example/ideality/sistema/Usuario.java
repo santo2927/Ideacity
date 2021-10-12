@@ -1,4 +1,4 @@
-package com.example.procesossoftware.sistema;
+package com.example.ideality.sistema;
 
 import com.example.procesossoftware.sistema.Idea;
 
