@@ -5,7 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.procesossoftware.R;
+import com.example.prueba2.R;
 
 public class Gestor {
 
