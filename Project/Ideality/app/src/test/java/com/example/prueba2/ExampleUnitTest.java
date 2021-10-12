@@ -1,4 +1,4 @@
-package com.example.ideality;
+package com.example.prueba2;
 
 import org.junit.Test;
 
