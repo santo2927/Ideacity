@@ -40,6 +40,15 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
         listaIdea=(ListView) findViewById(R.id.listIdeas);
         listaCarpetas=(ListView) findViewById(R.id.listCarpetas);
 
+        /*Sistema.User u= s.getLogedUser();
+        s.addEtiqueta("Universidad",1);
+        s.getLogedUser().addCarpeta("La vida es dura");
+        ArrayList<Integer> ej = new ArrayList<>();
+        ej.add(1);
+        s.addIdea("Hola","La vida es grande pero ala lo es mas",7,ej);
+
+        Sistema.guardarSistema();*/
+
         listaCarpetasUsable=s.getCarpetas();
         listaIdeaUsable=s.getIdeas();
 

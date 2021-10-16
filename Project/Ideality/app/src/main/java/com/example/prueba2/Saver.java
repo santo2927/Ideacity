@@ -12,6 +12,9 @@ public class Saver {
 
     public Saver(SharedPreferences sp){
         this.sp=sp;
+        //sp.edit().clear().commit();
+
+
     }
 
     public void getSistema(){
@@ -33,28 +36,43 @@ public class Saver {
                 s.logIn(nombre,contraseña);
                 Set<String> ideas=sp.getStringSet(nombre+"ideas",null);
                 Set<String> carpetas=sp.getStringSet(nombre+"carpetas",null);
-                for(String idea:ideas){
-                    String nombreIdea=idea.split("\n")[0];
-                    String descripcion=idea.split("\n")[1];
-                    String prioridad=idea.split("\n")[2];
-                    ArrayList<Integer> etiq=new ArrayList<>();
-                    for (int w=3;w<idea.split("\n").length;w++){
-                        etiq.add(Integer.parseInt(idea.split("\n")[w]));
+                if(ideas!=null){
+                    for(String idea:ideas){
+                        String nombreIdea=idea.split("\n")[0];
+                        String descripcion=idea.split("\n")[1];
+                        String prioridad=idea.split("\n")[2];
+                        ArrayList<Integer> etiq=new ArrayList<>();
+                        for (int w=3;w<idea.split("\n").length;w++){
+                            try {
+                                etiq.add(Integer.parseInt(idea.split("\n")[w]));
+                            } catch(Exception e){
+
+                            }
+                        }
+                        s.addIdea(nombreIdea,descripcion,Integer.parseInt(prioridad),etiq);
                     }
-                    s.addIdea(nombreIdea,descripcion,Integer.parseInt(prioridad),etiq);
                 }
-                for(String carpeta:carpetas){
-                    String nombreCarpeta=carpeta.split("\n")[0];
-                    s.getLogedUser().addCarpeta(nombreCarpeta);
-                    String nombreIdea=carpeta.split("\n")[1];
-                    String descripcion=carpeta.split("\n")[2];
-                    String prioridad=carpeta.split("\n")[3];
-                    ArrayList<Integer> etiq=new ArrayList<>();
-                    for (int w=4;w<carpeta.split("\n").length;w++){
-                        etiq.add(Integer.parseInt(carpeta.split("\n")[w]));
-                    }
-                    s.getLogedUser().getCarpeta(nombreCarpeta).addIdea(nombreIdea,descripcion,Integer.parseInt(prioridad),etiq);
+                if(carpetas!=null){
+                    for(String carpeta:carpetas){
+                        String nombreCarpeta=carpeta.split("\n")[0];
+
+                        s.getLogedUser().addCarpeta(nombreCarpeta);
+                        if(carpeta.split("\n").length>2){
+                        String nombreIdea=carpeta.split("\n")[1];
+                        String descripcion=carpeta.split("\n")[2];
+                        String prioridad=carpeta.split("\n")[3];
+                        ArrayList<Integer> etiq=new ArrayList<>();
+                        for (int w=4;w<carpeta.split("\n").length;w++){
+                            try {
+                                etiq.add(Integer.parseInt(carpeta.split("\n")[w]));
+                            } catch(Exception e){
+
+                            }
+                        }
+                        s.getLogedUser().getCarpeta(nombreCarpeta).addIdea(nombreIdea,descripcion,Integer.parseInt(prioridad),etiq);
+                    }}
                 }
+
             }
         }
 
@@ -74,7 +92,6 @@ public class Saver {
             String contraseña=r.split("\n")[1];
             s.logIn(nombre,contraseña);
             Set<String> carpetas=s.getCarpetastoSave();
-            Sistema.User u = s.getLogedUser();
             editor.putStringSet(nombre+"carpetas",carpetas).commit();
             Set<String> ideas = s.getIdeasSave();
             editor.putStringSet(nombre+"ideas",ideas).commit();

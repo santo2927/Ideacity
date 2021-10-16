@@ -25,11 +25,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         sv=new Saver(getSharedPreferences("Ideality",Context.MODE_PRIVATE));
-        sv.getSistema();
+        Sistema.setSaver(sv);
         s=Sistema.getSistema();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dbUser = new DB(this);
         botones();
         Button conf = (Button) findViewById(R.id.btnConfDatos);
         conf.setOnClickListener(new View.OnClickListener() {
@@ -47,24 +46,13 @@ public class MainActivity extends AppCompatActivity {
     private void comprobacionDatos() {
 
         user = (EditText) findViewById(R.id.txtRegUsername);
-        dbUser.getUser(user.toString());
         pass = (EditText) findViewById(R.id.txtRegPass);
-        /*SQLiteDatabase bd ;
-        Cursor contenido;
-        bd= dbUser.getReadableDatabase();
-        contenido = bd.rawQuery("select * from Sesion where jugador='"+user.getText()+"' and contraseña='"+pass.getText()+"'", null);
-        if (contenido.moveToNext()){
-            Sistema s=Sistema.getSistema();
-            s.logIn((String)user,(String)pass);
-            Intent i = new Intent(MainActivity.this, GestorIdeas.class);
-            startActivity(i);
-        }else{
-            Toast.makeText(this, "No existe ese usuario", Toast.LENGTH_SHORT).show();
-        }*/
+        s =  Sistema.getSistema();
         user = (EditText) findViewById(R.id.txtRegUsername);
         pass = (EditText) findViewById(R.id.txtRegPass);
         String nombre=user.getText().toString();
         String contraseña= pass.getText().toString();
+
         Boolean b =s.logIn(nombre,contraseña);
         sv.guardarSistema();
         if(b){

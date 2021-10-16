@@ -5,6 +5,8 @@ import android.os.Environment;
 import android.provider.Settings;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -23,6 +25,9 @@ import java.util.Locale;
 import java.util.Set;
 
 public class Sistema implements Serializable {
+
+
+
     public List<User.Carpeta> getCarpetas() {
         assert isLoged();
         return this.loggedUser.carpetas;
@@ -46,6 +51,9 @@ public class Sistema implements Serializable {
         for(User.Carpeta c:this.getCarpetas()){
             for(User.Idea i:c.ideas){
                 s.add(c.nombre+" "+i.toString());
+            }
+            if(c.ideas.isEmpty()){
+                s.add(c.nombre+"\n");
             }
         }
         return s;
@@ -131,10 +139,11 @@ public class Sistema implements Serializable {
             }
 
             @Override
-            public int compareTo(Idea o) {
+            public int compareTo(@NonNull Idea o) {
                 return o.prioridad.compareTo(this.prioridad);
             }
 
+            @Override
             public String toString(){
                 String s="";
                 for(Integer i:etiquetas){
@@ -153,6 +162,10 @@ public class Sistema implements Serializable {
             public Carpeta(String nombre) {
                 this.nombre = nombre;
                 ideas=new ArrayList<>();
+            }
+
+            public String toString(){
+                return nombre;
             }
 
             public void addIdea(String nombre, String descripcion, Integer prioridad, ArrayList<Integer> etiquetas){
@@ -209,7 +222,7 @@ public class Sistema implements Serializable {
     private static Sistema instancia = null;
 
     private HashMap<String, User> usuarios;
-
+    private static Saver sb=null;
     private HashMap<Integer,String> etiquetas;
 
     private User loggedUser;
@@ -225,7 +238,7 @@ public class Sistema implements Serializable {
     public Set<String> getEtiquetas(){
         HashSet<String> etiquetas=new HashSet<>();
         for(Integer i:this.etiquetas.keySet()){
-            etiquetas.add(i+" "+this.etiquetas.get(i));
+            etiquetas.add(i+"\n"+this.etiquetas.get(i));
         }
         return etiquetas;
     }
@@ -237,12 +250,20 @@ public class Sistema implements Serializable {
         instancia=this;
     }
 
+    public static Sistema setSaver(Saver sb){
+        instancia=new Sistema();
+        Sistema.sb=sb;
+        sb.getSistema();
+        return instancia;
+    }
+
 
     public static Sistema getSistema() {
-        if (instancia == null) {
-            new Sistema();
-        }
         return instancia;
+    }
+
+    public static void guardarSistema(){
+        sb.guardarSistema();
     }
 
     private boolean isRegistered(String name){
