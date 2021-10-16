@@ -10,38 +10,44 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class GestorIdeas extends AppCompatActivity {
+public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-    ArrayList<String> listaDatos;
-    RecyclerView recycler;
+    ListView listaIdea,listaCarpetas;
+    List<Sistema.User.Carpeta> listaCarpetasUsable;
+    List<Sistema.User.Idea> listaIdeaUsable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestor);
-
+        Sistema s=Sistema.getSistema();
        //Barra de herramientas
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
         //fin barra
 
         //RECYCLE VIEW
-        recycler = (RecyclerView) findViewById(R.id.RecycleId);
-        recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        listaIdea=(ListView) findViewById(R.id.listIdeas);
+        listaCarpetas=(ListView) findViewById(R.id.listCarpetas);
 
-        listaDatos = new ArrayList<String>();
-        for (int i=0; i<=50;i++){
-            listaDatos.add("Dato # " +i+" ");
-        }
+        listaCarpetasUsable=s.getCarpetas();
+        listaIdeaUsable=s.getIdeas();
 
-        Adaptador adapter = new Adaptador(listaDatos);
-        recycler.setAdapter(adapter);
-        //FIN RECYCLE
+        ArrayAdapter adaptadorIdea=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaIdeaUsable);
+        ArrayAdapter adaptadorCarpeta=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaCarpetasUsable);
+
+        listaIdea.setAdapter(adaptadorIdea);
+        listaCarpetas.setAdapter(adaptadorCarpeta);
     }
 
 
@@ -60,5 +66,10 @@ public class GestorIdeas extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(opcion_menu);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
     }
 }

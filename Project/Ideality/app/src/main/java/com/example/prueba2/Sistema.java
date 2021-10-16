@@ -1,19 +1,84 @@
 package com.example.prueba2;
 
+import android.content.Context;
+import android.os.Environment;
+import android.provider.Settings;
+import android.util.Log;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 public class Sistema implements Serializable {
+    public List<User.Carpeta> getCarpetas() {
+        assert isLoged();
+        return this.loggedUser.carpetas;
+    }
+
+    public List<User.Idea> getIdeas() {
+        assert isLoged();
+        return this.loggedUser.ideas;
+    }
+
+    public Set<String> getIdeasSave(){
+        HashSet<String> s=new HashSet<>();
+        for(User.Idea i:this.getIdeas()){
+            s.add(i.toString());
+        }
+        return s;
+    }
+
+    public Set<String> getCarpetastoSave() {
+        HashSet<String> s=new HashSet<>();
+        for(User.Carpeta c:this.getCarpetas()){
+            for(User.Idea i:c.ideas){
+                s.add(c.nombre+" "+i.toString());
+            }
+        }
+        return s;
+    }
+
+    public User getLogedUser() {
+        return this.loggedUser;
+    }
+
+
+
     class User{
+        public String getName() {
+            return this.nombre;
+        }
+
+        public String getPassword() {
+            return this.contraseña;
+        }
+
+        public void addCarpeta(String nombreCarpeta) {
+            this.carpetas.add(new Carpeta(nombreCarpeta));
+        }
+
+        public Carpeta getCarpeta(String nombreCarpeta) {
+            for(Carpeta c:this.carpetas){
+                if(c.nombre.equalsIgnoreCase(nombreCarpeta)){
+                    return c;
+                }
+            }
+            return null;
+        }
+
         class Idea implements Comparable<Idea>{
             private String nombre;
             private String descripcion;
@@ -69,7 +134,17 @@ public class Sistema implements Serializable {
             public int compareTo(Idea o) {
                 return o.prioridad.compareTo(this.prioridad);
             }
+
+            public String toString(){
+                String s="";
+                for(Integer i:etiquetas){
+                    s+=i+"\n";
+                }
+                return String.format("%s\n%s\n%d\n%s",nombre,descripcion,prioridad,s);
+            }
         }
+
+
 
         class Carpeta{
             private String nombre;
@@ -80,27 +155,28 @@ public class Sistema implements Serializable {
                 ideas=new ArrayList<>();
             }
 
-            public void addIdea(Idea i){
-                this.ideas.add(i);
+            public void addIdea(String nombre, String descripcion, Integer prioridad, ArrayList<Integer> etiquetas){
+                this.ideas.add(new Idea(nombre,descripcion,prioridad,etiquetas));
             }
+
+
         }
 
         private String nombre;
-        private String correo;
         private String contraseña;
         private ArrayList<Carpeta> carpetas;
         private ArrayList<Idea> ideas;
 
-        public User(String nombre,String correo, String contraseña){
+        public User(String nombre, String contraseña){
             this.contraseña=contraseña;
-            this.correo=correo;
             this.nombre=nombre;
             this.carpetas=new ArrayList<>();
             this.ideas=new ArrayList<>();
         }
 
         private void moverACarpeta(int idea,int carpeta){
-            this.carpetas.get(carpeta).addIdea(this.ideas.get(idea));
+            Idea i = this.ideas.get(idea);
+            this.carpetas.get(carpeta).addIdea(i.nombre,i.descripcion,i.prioridad,i.etiquetas);
             this.ideas.remove(idea);
         }
 
@@ -126,65 +202,45 @@ public class Sistema implements Serializable {
             this.ideas.add(new Idea(nombre,descripcion,prioridad,etiquetas));
         }
 
+
+
     }
 
-    private static final long serialVersionUID = 1L;
     private static Sistema instancia = null;
-    private static final String DATABASE = "database.obj";
+
     private HashMap<String, User> usuarios;
+
     private HashMap<Integer,String> etiquetas;
+
     private User loggedUser;
+
+    public Set<String> getUsuarios(){
+        HashSet<String> s = new HashSet<>();
+        for (String u:this.usuarios.keySet()){
+            s.add(u+"\n"+this.usuarios.get(u).contraseña);
+        }
+        return s;
+    }
+
+    public Set<String> getEtiquetas(){
+        HashSet<String> etiquetas=new HashSet<>();
+        for(Integer i:this.etiquetas.keySet()){
+            etiquetas.add(i+" "+this.etiquetas.get(i));
+        }
+        return etiquetas;
+    }
 
     public Sistema(){
         usuarios=new HashMap<>();
         etiquetas=new HashMap<>();
         loggedUser=null;
+        instancia=this;
     }
 
-    public static Sistema cargarSistema() {
-        try {
-            FileInputStream file = new FileInputStream(DATABASE);
-            ObjectInputStream object = new ObjectInputStream(file);
-            Sistema instancia2 = (Sistema) object.readObject();
-            object.close();
-            file.close();
-            return instancia2;
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex.getMessage());
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        } catch (ClassNotFoundException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return null;
-
-    }
-
-    public Boolean guardarSistema() {
-        try {
-            FileOutputStream file = new FileOutputStream(DATABASE);
-            ObjectOutputStream object = new ObjectOutputStream(file);
-            object.writeObject(this);
-            object.close();
-            file.close();
-            return true;
-
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex.getMessage());
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return false;
-    }
 
     public static Sistema getSistema() {
         if (instancia == null) {
-            File f = new File(DATABASE);
-            if (f.exists()) {
-                instancia = cargarSistema();
-            } else {
-                instancia = new Sistema();
-            }
+            new Sistema();
         }
         return instancia;
     }
@@ -193,16 +249,16 @@ public class Sistema implements Serializable {
         return usuarios.containsKey(name);
     }
 
-    public boolean register(String nombre, String correo, String contraseña){
+    public boolean register(String nombre, String contraseña){
         if(!isRegistered(nombre)) {
-            usuarios.put(nombre, new User(nombre, correo, contraseña));
+            usuarios.put(nombre, new User(nombre, contraseña));
             return true;
         }
         return false;
     }
 
     public boolean logIn(String nombre, String contraseña){
-        if(isRegistered(nombre)){
+        if(isRegistered(nombre) && this.usuarios.get(nombre).contraseña.equals(contraseña)){
             this.loggedUser=usuarios.get(nombre);
             return true;
         }
@@ -235,6 +291,11 @@ public class Sistema implements Serializable {
         this.loggedUser.addIdea(nombre, descripcion, prioridad, aux);
     }
 
+    public void addIdea(String nombre, String descripcion, int prioridad, ArrayList<Integer> etiquetas){
+        assert isLoged();
+        this.loggedUser.addIdea(nombre, descripcion, prioridad, etiquetas);
+    }
+
     public Integer createEtiqueta(String s){
         return getEtiqueta(s);
     }
@@ -242,6 +303,10 @@ public class Sistema implements Serializable {
     public void moverACarpeta(String idea, String carpeta){
         assert isLoged();
         this.loggedUser.moverACarpeta(idea,carpeta);
+    }
+
+    public void addEtiqueta(String s, Integer i){
+        this.etiquetas.put(i,s);
     }
 
 
