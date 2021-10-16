@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 
 public class CrearIdea extends AppCompatActivity {
 
@@ -27,5 +28,15 @@ public class CrearIdea extends AppCompatActivity {
     public boolean onCreateOptionsMenu (Menu mimenuidea) {
         getMenuInflater().inflate(R.menu.menu_idea, mimenuidea);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem opcion_menu_idea){
+        int id = opcion_menu_idea.getItemId();
+        if (id==R.id.guardarIdea){
+
+            return true;
+        }
+        return super.onOptionsItemSelected(opcion_menu_idea);
     }
 }
