@@ -19,6 +19,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolderDatos> {
         this.listaDatos = listaDatos;
     }
 
+
     @Override
     public ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lista_items,null,false);

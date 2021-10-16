@@ -25,6 +25,7 @@
         android:ems="10"
         android:hint="Introduce Título"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:textColorHint="#ACACAC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
