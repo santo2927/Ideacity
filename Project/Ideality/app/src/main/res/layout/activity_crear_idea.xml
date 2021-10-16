@@ -25,17 +25,19 @@
         android:ems="10"
         android:hint="Introduce Título"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:textColorHint="#ACACAC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/my_toolbar2"
-        tools:ignore="UnknownId" />
+        tools:ignore="UnknownId"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editTextTextMultiLine"
-        android:layout_width="0dp"
-        android:layout_height="500dp"
+        android:layout_width="382dp"
+        android:layout_height="433dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -56,9 +58,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="84dp"
         android:text="+ Etiqueta"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
+        app:layout_constraintVertical_bias="0.096" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="97dp"
+        android:layout_height="35dp"
+        android:text="Prioridad"
+        app:layout_constraintBottom_toTopOf="@+id/botonEtiqueta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
+        app:layout_constraintVertical_bias="0.576" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Añadir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.795"
+        app:layout_constraintStart_toEndOf="@+id/botonEtiqueta"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
 
 
