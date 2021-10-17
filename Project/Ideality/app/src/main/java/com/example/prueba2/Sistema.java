@@ -63,6 +63,9 @@ public class Sistema implements Serializable {
         return this.loggedUser;
     }
 
+    public void logOut() {
+        this.loggedUser=null;
+    }
 
 
     class User{

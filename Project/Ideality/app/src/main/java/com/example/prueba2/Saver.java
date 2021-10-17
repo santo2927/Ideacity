@@ -83,6 +83,7 @@ public class Saver {
     public void guardarSistema(){
         SharedPreferences.Editor editor = sp.edit();
         Sistema s=Sistema.getSistema();
+        Sistema.User u=s.getLogedUser();
         Set<String> usuarios=s.getUsuarios();
         editor.putStringSet("usuarios", usuarios).commit();
         Set<String> etiquetas=s.getEtiquetas();
@@ -95,6 +96,11 @@ public class Saver {
             editor.putStringSet(nombre+"carpetas",carpetas).commit();
             Set<String> ideas = s.getIdeasSave();
             editor.putStringSet(nombre+"ideas",ideas).commit();
+        }
+        if(u!=null){
+            s.logIn(u.getName(),u.getPassword());
+        } else{
+            s.logOut();
         }
 
 
