@@ -8,6 +8,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,6 +58,42 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
 
         listaIdea.setAdapter(adaptadorIdea);
         listaCarpetas.setAdapter(adaptadorCarpeta);
+
+        listaIdea.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Sistema.User.Idea i = listaIdeaUsable.get(position);
+                Log.i("Idea",i.toString());
+            }
+        });
+
+        listaIdea.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
+                // TODO Auto-generated method stub
+                Sistema.User.Idea i = listaIdeaUsable.get(pos);
+                Log.v("long clicked idea","pos: " + i);
+                return true;
+            }
+        });
+
+        listaCarpetas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Sistema.User.Carpeta i = listaCarpetasUsable.get(position);
+                Log.i("Carpeta",i.toString());
+            }
+        });
+
+        listaCarpetas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
+                // TODO Auto-generated method stub
+                Sistema.User.Carpeta i = listaCarpetasUsable.get(pos);
+                Log.v("long clicked carpeta","pos: " + i);
+                return true;
+            }
+        });
     }
 
 

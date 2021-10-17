@@ -41,7 +41,7 @@ public class Sistema implements Serializable {
     public Set<String> getIdeasSave(){
         HashSet<String> s=new HashSet<>();
         for(User.Idea i:this.getIdeas()){
-            s.add(i.toString());
+            s.add(i.getString());
         }
         return s;
     }
@@ -50,7 +50,7 @@ public class Sistema implements Serializable {
         HashSet<String> s=new HashSet<>();
         for(User.Carpeta c:this.getCarpetas()){
             for(User.Idea i:c.ideas){
-                s.add(c.nombre+" "+i.toString());
+                s.add(c.nombre+" "+i.getString());
             }
             if(c.ideas.isEmpty()){
                 s.add(c.nombre+"\n");
@@ -148,6 +148,11 @@ public class Sistema implements Serializable {
 
             @Override
             public String toString(){
+                return this.nombre;
+            }
+
+
+            public String getString(){
                 String s="";
                 for(Integer i:etiquetas){
                     s+=i+"\n";
