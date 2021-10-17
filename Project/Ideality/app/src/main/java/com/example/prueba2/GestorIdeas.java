@@ -77,7 +77,6 @@ public class GestorIdeas extends AppCompatActivity {
                 s.setSelectedIdea(listaIdeaUsable.get(position));
                 Intent intent= new Intent(GestorIdeas.this, editarIdea.class);
                 startActivity(intent);
-                Log.v("long clicked idea","pos: " );
                 return true;
             }
         });
@@ -96,7 +95,6 @@ public class GestorIdeas extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
                 // TODO Auto-generated method stub
                 Sistema.User.Carpeta c = listaCarpetasUsable.get(pos);
-                Log.v("long clicked carpeta","pos: " + c);
                 s.selectFolder(c);
                 Intent i = new Intent(GestorIdeas.this, SelectAddIdea.class);
                 startActivity(i);

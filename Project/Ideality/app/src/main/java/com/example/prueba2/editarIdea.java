@@ -35,6 +35,7 @@ public class editarIdea extends AppCompatActivity {
     protected void onCreate (Bundle savedInstanceState){
 
         idea = s.getSelectedIdea();
+        s.setSelectedIdea(null);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_idea);
         eTitulo = findViewById(R.id.eText);
@@ -72,6 +73,16 @@ public class editarIdea extends AppCompatActivity {
 
         for (String etiq : s.getEtiquetasIdea(idea)){
             chip.setText(etiq);
+            chip.setOnCloseIconClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String nombre = chip.getText().toString();
+                    chipGroup.removeView(chip);
+                    listaEtiquetas.remove(nombre);
+
+                }
+            });
+            chipGroup.removeView(chip);
             chipGroup.addView(chip);
             listaEtiquetas.add(etiq);
         }
@@ -91,7 +102,9 @@ public class editarIdea extends AppCompatActivity {
         chip.setOnCloseIconClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String nombre = chip.getText().toString();
                 chipGroup.removeView(chip);
+                listaEtiquetas.remove(nombre);
             }
         });
         chipGroup.addView(chip);

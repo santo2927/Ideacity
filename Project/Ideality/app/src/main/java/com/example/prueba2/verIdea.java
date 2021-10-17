@@ -14,6 +14,7 @@ public class verIdea extends AppCompatActivity {
 
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.ver_idea);
         TextView titulo = findViewById(R.id.verTitulo);
         TextView descripcion = findViewById(R.id.verDescripcion);
@@ -22,7 +23,7 @@ public class verIdea extends AppCompatActivity {
         Sistema s=Sistema.getSistema();
         //titulo.setText();
         Sistema.User.Idea idea = s.getSelectedIdea();
-
+        s.setSelectedIdea(null);
         titulo.setText("Nombre: "+idea.getNombre());
         descripcion.setText("Descripcion: " +idea.getDescripcion());
         prioridad.setText("Prioridad: "+idea.getPrioridad().toString());
