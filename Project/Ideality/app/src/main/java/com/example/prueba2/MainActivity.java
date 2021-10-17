@@ -17,7 +17,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    DB dbUser;
     EditText user, pass, confPass;
     Sistema s=null;
     Saver sv;

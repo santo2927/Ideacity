@@ -8,22 +8,22 @@
 
     <ListView
         android:id="@+id/listCheck"
-        android:layout_width="404dp"
-        android:layout_height="608dp"
+        android:layout_width="318dp"
+        android:layout_height="477dp"
         android:text="CheckBox"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.495" />
+        app:layout_constraintVertical_bias="0.429" />
 
     <TextView
         android:id="@+id/selectIdeasTitle"
         android:layout_width="266dp"
         android:layout_height="51dp"
         android:layout_marginStart="72dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="32dp"
 
         android:text="Ideas a añadir"
         android:textSize="40sp"
@@ -34,9 +34,9 @@
         android:id="@+id/searchIdeas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Button"
+        android:text="OK"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
