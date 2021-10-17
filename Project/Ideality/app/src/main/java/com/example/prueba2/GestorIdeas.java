@@ -127,7 +127,7 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
             SortedList listaIdeaUsable;
              Toast.makeText(this, "No existe ese usuario", Toast.LENGTH_SHORT).show();
             return true;}
-        else if(id==R.id.BotonAntiguedad){
+        else if(id==R.id.BotonPrioridad){
               Toast.makeText(this, "No existe ", Toast.LENGTH_SHORT).show();
               return true;}
 
