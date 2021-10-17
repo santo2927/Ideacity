@@ -58,7 +58,7 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
         Sistema.guardarSistema();*/
 
         listaCarpetasUsable=s.getCarpetas();
-        listaIdeaUsable=s.getIdeas();
+        listaIdeaUsable=s.getIdeasFiltradas();
 
         ArrayAdapter adaptadorIdea=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaIdeaUsable);
         ArrayAdapter adaptadorCarpeta=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaCarpetasUsable);
@@ -120,36 +120,32 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
     @Override
     public boolean onOptionsItemSelected (MenuItem opcion_menu){
         Sistema s = Sistema.getSistema();
+        ArrayAdapter adaptadorIdea;
+        ArrayList<Sistema.User.Idea> listaIdeas;
         int id = opcion_menu.getItemId();
-        if (id==R.id.BotonIdea){
-            Intent i = new Intent(this, CrearIdea.class);
-            startActivity(i);
-            return true;
-        }
-<<<<<<< Updated upstream
-        else if(id==R.id.BotonAlfabeticamente){
-                ArrayList<Sistema.User.Idea> listaIdeas = (ArrayList<Sistema.User.Idea>) s.ordenarIdeasNombre();
-                ArrayAdapter adaptadorIdea=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaIdeaUsable);
+        switch (id){
+            case R.id.BotonIdea:
+                Intent i = new Intent(this, CrearIdea.class);
+                startActivity(i);
+                break;
+            case R.id.BotonAlfabeticamente:
+                listaIdeas = (ArrayList<Sistema.User.Idea>) s.ordenarIdeasNombre();
+                adaptadorIdea=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaIdeaUsable);
                 listaIdea.setAdapter(adaptadorIdea);
                 Toast.makeText(this, "Has ordenado tus ideas por nombre", Toast.LENGTH_SHORT).show();
-                return true;}
-        else if(id==R.id.BotonPrioridad){
-                ArrayList<Sistema.User.Idea> listaIdeas = (ArrayList<Sistema.User.Idea>) s.ordenarIdeasPrioridad();
+                break;
+            case R.id.BotonPrioridad:
+                listaIdeas = (ArrayList<Sistema.User.Idea>) s.ordenarIdeasPrioridad();
                 Collections.reverse(listaIdeas);
-                ArrayAdapter adaptadorIdea=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaIdeaUsable);
+                adaptadorIdea=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaIdeaUsable);
                 listaIdea.setAdapter(adaptadorIdea);
                 Toast.makeText(this, "Has ordenado tus ideas por prioridad", Toast.LENGTH_SHORT).show();
-                return true;}
-
-
-=======
-        else
-            if (id==R.id.BotonFiltrar){
+                break;
+            case R.id.BotonFiltrar:
                 Intent j = new Intent(this, Filtrar.class);
                 startActivity(j);
                 return true;
-            }
->>>>>>> Stashed changes
+        }
         return super.onOptionsItemSelected(opcion_menu);
     }
 

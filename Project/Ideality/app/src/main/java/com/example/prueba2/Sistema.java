@@ -127,6 +127,36 @@ public class Sistema implements Serializable {
         return this.selectedFolder.nombre;
     }
 
+    private ArrayList<Integer> filter;
+
+    public void selectFilter(ArrayList<String> toadd) {
+        filter=new ArrayList<>();
+        for(String s:toadd){
+            filter.add(this.getEtiqueta(s));
+        }
+    }
+
+    public List<User.Idea> getIdeasFiltradas() {
+        if(this.filter==null || this.filter.size()<1){
+            return this.getIdeas();
+        }
+        ArrayList<User.Idea> fin=new ArrayList<>();
+        for(User.Idea i:this.getIdeas()){
+            if(i.containsEtiqueta(filter)){
+                fin.add(i);
+            }
+        }
+        return fin;
+    }
+
+    public ArrayList<String> getEtiquetasString() {
+        ArrayList<String> s = new ArrayList<>();
+        for(Integer i:this.etiquetas.keySet()){
+            s.add(this.etiquetas.get(i));
+        }
+        return s;
+    }
+
     class User{
         public String getName() {
             return this.nombre;
@@ -223,6 +253,14 @@ public class Sistema implements Serializable {
                     s+=i+"\n";
                 }
                 return String.format("%s\n%s\n%d\n%s",nombre,descripcion,prioridad,s);
+            }
+
+            public boolean containsEtiqueta(ArrayList<Integer> filter) {
+                Boolean aux=false;
+                for(Integer s:filter){
+                    aux|=this.etiquetas.contains(s);
+                }
+                return aux;
             }
         }
 

@@ -1,17 +1,13 @@
 package com.example.prueba2;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -23,7 +19,7 @@ public class SelectAddIdea extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Sistema s = Sistema.getSistema();
         setContentView(R.layout.activity_select_add_idea);
-        Button b = findViewById(R.id.addIdea);
+        Button b = findViewById(R.id.searchIdeas);
         ListView lv = findViewById(R.id.listCheck);
         ArrayList<Sistema.User.Idea> ids = (ArrayList<Sistema.User.Idea>) s.getIdeas();
         Sistema.User.Idea[] idArr=new Sistema.User.Idea[ids.size()];

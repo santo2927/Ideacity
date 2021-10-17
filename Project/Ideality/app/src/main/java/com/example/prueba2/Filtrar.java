@@ -1,51 +1,56 @@
 package com.example.prueba2;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.SparseBooleanArray;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 public class Filtrar extends AppCompatActivity {
 
-    ListView listTags;
-    ArrayAdapter<String> adapter;
-    Set<String> s = Sistema.getSistema().getEtiquetas();
-    String[] arrayEtiquetas = s.toArray(new String[0]);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Sistema s = Sistema.getSistema();
         setContentView(R.layout.activity_filtrar);
-        listTags = findViewById(R.id.listView_data);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice,arrayEtiquetas);
-        listTags.setAdapter(adapter);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_filtrar, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.item_done){
-            String itemSelected = "Selected items: \n";
-            for(int i = 0; i<listTags.getCount(); i++){
-                if (listTags.isItemChecked(i)){
-                    itemSelected += listTags.getItemAtPosition(i) + "\n";
-                }
-            }
-            Toast.makeText(this, itemSelected, Toast.LENGTH_SHORT).show();
+        Button b = findViewById(R.id.searchEtiquetas);
+        ListView lv = findViewById(R.id.listCheckEtiquetas);
+        ArrayList<String> ids = s.getEtiquetasString();
+        String[] idArr=new String[ids.size()];
+        int x=0;
+        for(String string:ids){
+            idArr[x]=string;
+            x++;
         }
-        return super.onOptionsItemSelected(item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_multiple_choice,ids);
+        adapter.notifyDataSetChanged();
+        lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        lv.setAdapter(adapter);
+        ArrayList<String> toadd=new ArrayList<>();
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SparseBooleanArray checked = lv.getCheckedItemPositions();
+                for(int i=0;i<checked.size();i++){
+                    toadd.add(idArr[checked.keyAt(i)]);
+                }
+                s.selectFilter(toadd);
+                Intent i = new Intent(Filtrar.this, GestorIdeas.class);
+                startActivity(i);
+            }
+        });
     }
 }

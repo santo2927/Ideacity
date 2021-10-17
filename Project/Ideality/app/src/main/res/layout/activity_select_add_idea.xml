@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.495" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/selectIdeasTitle"
         android:layout_width="266dp"
         android:layout_height="51dp"
         android:layout_marginStart="72dp"
@@ -31,7 +31,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/addIdea"
+        android:id="@+id/searchIdeas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
