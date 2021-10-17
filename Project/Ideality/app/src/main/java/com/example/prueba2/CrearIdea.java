@@ -72,9 +72,9 @@ public class CrearIdea extends AppCompatActivity {
             }
         });
         chipGroup.addView(chip);
-        textInputEditText.setText(" ");
         //añadir lo escrito a la idea
         listaEtiquetas.add(textInputEditText.getText().toString());
+        textInputEditText.setText("");
 
     }
     //MENU
@@ -88,7 +88,9 @@ public class CrearIdea extends AppCompatActivity {
     public boolean onOptionsItemSelected (MenuItem opcion_menu_idea){
         int id = opcion_menu_idea.getItemId();
         if (id==R.id.guardarIdea){
-            s.createIdea((String) eTitulo.getText(), (String) eDescripcion.getText(), Integer.parseInt((String) ePrioridad.getText()), listaEtiquetas);
+            s.createIdea( eTitulo.getText().toString(),  eDescripcion.getText().toString(), Integer.parseInt(ePrioridad.getText().toString()), listaEtiquetas);
+            Intent i = new Intent(CrearIdea.this, GestorIdeas.class);
+            startActivity(i);
             return true;
         }
         return super.onOptionsItemSelected(opcion_menu_idea);
