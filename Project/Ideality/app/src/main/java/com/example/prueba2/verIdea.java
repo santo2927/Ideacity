@@ -26,7 +26,7 @@ public class verIdea extends AppCompatActivity {
         titulo.setText("Nombre: "+idea.getNombre());
         descripcion.setText("Descripcion: " +idea.getDescripcion());
         prioridad.setText("Prioridad: "+idea.getPrioridad().toString());
-        ArrayAdapter adaptadorEtiquetas=new ArrayAdapter(this, android.R.layout.simple_list_item_1,idea.getEtiquetas());
+        ArrayAdapter adaptadorEtiquetas=new ArrayAdapter(this, android.R.layout.simple_list_item_1,s.getEtiquetasIdea(idea));
         listaEtiquetas.setAdapter(adaptadorEtiquetas);
 
     }

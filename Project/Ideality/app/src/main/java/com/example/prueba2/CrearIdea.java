@@ -88,7 +88,13 @@ public class CrearIdea extends AppCompatActivity {
     public boolean onOptionsItemSelected (MenuItem opcion_menu_idea){
         int id = opcion_menu_idea.getItemId();
         if (id==R.id.guardarIdea){
-            s.createIdea( eTitulo.getText().toString(),  eDescripcion.getText().toString(), Integer.parseInt(ePrioridad.getText().toString()), listaEtiquetas);
+            Integer r =0;
+            try{
+                r=Integer.parseInt(ePrioridad.getText().toString());
+            }catch(Exception e){
+
+            }
+            s.createIdea( eTitulo.getText().toString(),  eDescripcion.getText().toString(),r, listaEtiquetas);
             Intent i = new Intent(CrearIdea.this, GestorIdeas.class);
             startActivity(i);
             return true;

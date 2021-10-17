@@ -28,7 +28,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class GestorIdeas extends AppCompatActivity {
 
     ListView listaIdea,listaCarpetas;
     List<Sistema.User.Carpeta> listaCarpetasUsable;
@@ -47,15 +47,6 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
         //RECYCLE VIEW
         listaIdea=(ListView) findViewById(R.id.listIdeas);
         listaCarpetas=(ListView) findViewById(R.id.listCarpetas);
-
-        /*Sistema.User u= s.getLogedUser();
-        s.addEtiqueta("Universidad",1);
-        s.getLogedUser().addCarpeta("La vida es dura");
-        ArrayList<Integer> ej = new ArrayList<>();
-        ej.add(1);
-        s.addIdea("Hola","La vida es grande pero ala lo es mas",7,ej);
-
-        Sistema.guardarSistema();*/
 
         listaCarpetasUsable=s.getCarpetas();
         listaIdeaUsable=s.getIdeasFiltradas();
@@ -130,14 +121,14 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
                 break;
             case R.id.BotonAlfabeticamente:
                 listaIdeas = (ArrayList<Sistema.User.Idea>) s.ordenarIdeasNombre();
-                adaptadorIdea=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaIdeaUsable);
+                adaptadorIdea=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaIdeas);
                 listaIdea.setAdapter(adaptadorIdea);
                 Toast.makeText(this, "Has ordenado tus ideas por nombre", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.BotonPrioridad:
                 listaIdeas = (ArrayList<Sistema.User.Idea>) s.ordenarIdeasPrioridad();
                 Collections.reverse(listaIdeas);
-                adaptadorIdea=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaIdeaUsable);
+                adaptadorIdea=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaIdeas);
                 listaIdea.setAdapter(adaptadorIdea);
                 Toast.makeText(this, "Has ordenado tus ideas por prioridad", Toast.LENGTH_SHORT).show();
                 break;
@@ -147,10 +138,5 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
                 return true;
         }
         return super.onOptionsItemSelected(opcion_menu);
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
     }
 }

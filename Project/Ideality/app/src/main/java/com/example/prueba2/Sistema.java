@@ -44,24 +44,27 @@ public class Sistema implements Serializable {
     
     @RequiresApi(api = Build.VERSION_CODES.N)
     public List<User.Idea> ordenarIdeasNombre(){
-        this.getIdeas().sort(new Comparator<User.Idea>() {
+        List<User.Idea> ordenadas = getIdeasFiltradas();
+        ordenadas.sort(new Comparator<User.Idea>() {
             @Override
             public int compare(User.Idea o1, User.Idea o2) {
                 return o1.nombre.compareToIgnoreCase(o2.nombre);
             }
         });
-        return this.getIdeas();
+        return ordenadas;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public List<User.Idea> ordenarIdeasPrioridad(){
-        this.getIdeas().sort(new Comparator<User.Idea>() {
+        List<User.Idea> ordenadas = getIdeasFiltradas();
+
+        ordenadas.sort(new Comparator<User.Idea>() {
             @Override
             public int compare(User.Idea o1, User.Idea o2) {
                 return o1.prioridad.compareTo(o2.prioridad);
             }
         });
-        return this.getIdeas();
+        return ordenadas;
     }
 
     public Set<String> getIdeasSave(){
@@ -152,6 +155,14 @@ public class Sistema implements Serializable {
     public ArrayList<String> getEtiquetasString() {
         ArrayList<String> s = new ArrayList<>();
         for(Integer i:this.etiquetas.keySet()){
+            s.add(this.etiquetas.get(i));
+        }
+        return s;
+    }
+
+    public ArrayList<String> getEtiquetasIdea(User.Idea idea) {
+        ArrayList<String> s = new ArrayList<>();
+        for(Integer i:idea.etiquetas){
             s.add(this.etiquetas.get(i));
         }
         return s;
