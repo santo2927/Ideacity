@@ -48,8 +48,12 @@ public class GestorIdeas extends AppCompatActivity {
         listaIdea=(ListView) findViewById(R.id.listIdeas);
         listaCarpetas=(ListView) findViewById(R.id.listCarpetas);
 
-        listaCarpetasUsable=s.getCarpetas();
-        listaIdeaUsable=s.getIdeasFiltradas();
+        try {
+            listaCarpetasUsable = s.getCarpetas();
+            listaIdeaUsable = s.getIdeasFiltradas();
+        }catch (Exception e){
+
+        }
 
         ArrayAdapter adaptadorIdea=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaIdeaUsable);
         ArrayAdapter adaptadorCarpeta=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaCarpetasUsable);
@@ -68,10 +72,12 @@ public class GestorIdeas extends AppCompatActivity {
 
         listaIdea.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long id) {
                 // TODO Auto-generated method stub
-                Sistema.User.Idea i = listaIdeaUsable.get(pos);
-                Log.v("long clicked idea","pos: " + i);
+                s.setSelectedIdea(listaIdeaUsable.get(position));
+                Intent intent= new Intent(GestorIdeas.this, editarIdea.class);
+                startActivity(intent);
+                Log.v("long clicked idea","pos: " );
                 return true;
             }
         });

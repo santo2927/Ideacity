@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#white"
     android:onClick="btnClick"
-    tools:context=".CrearIdea">
+    tools:context=".editarIdea">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar2"

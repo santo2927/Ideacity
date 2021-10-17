@@ -439,6 +439,18 @@ public class Sistema implements Serializable {
         this.loggedUser.addIdea(nombre, descripcion, prioridad, aux);
     }
 
+    public void editarIdea(String nombre, String descripcion, int prioridad, ArrayList<String> etiquetas, Sistema.User.Idea idea){
+        assert isLoged();
+        ArrayList<Integer> aux =new ArrayList<>();
+        for (String i:etiquetas){
+            aux.add(getEtiqueta(i));
+        }
+        idea.setDescripcion(descripcion);
+        idea.setNombre(nombre);
+        idea.setPrioridad(prioridad);
+        idea.setEtiquetas(aux);
+    }
+
     public void addIdea(String nombre, String descripcion, int prioridad, ArrayList<Integer> etiquetas){
         assert isLoged();
         this.loggedUser.addIdea(nombre, descripcion, prioridad, etiquetas);

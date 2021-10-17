@@ -30,6 +30,7 @@
         <activity android:name=".GestorIdeas" />
         <activity android:name=".verIdea" />
         <activity android:name=".Filtrar"/>
+        <activity android:name=".editarIdea"/>
     </application>
 
 </manifest>
