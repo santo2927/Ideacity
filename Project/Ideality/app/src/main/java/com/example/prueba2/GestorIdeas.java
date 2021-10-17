@@ -63,6 +63,10 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Sistema.User.Idea i = listaIdeaUsable.get(position);
+                verIdea vi = new verIdea();
+                vi.cambiarTexto(i);
+                Intent intent = new Intent(GestorIdeas.this, verIdea.class);
+                startActivity(intent);
                 Log.i("Idea",i.toString());
             }
         });
