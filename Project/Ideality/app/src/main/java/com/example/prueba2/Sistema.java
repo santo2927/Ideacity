@@ -79,7 +79,7 @@ public class Sistema implements Serializable {
         HashSet<String> s=new HashSet<>();
         for(User.Carpeta c:this.getCarpetas()){
             for(User.Idea i:c.ideas){
-                s.add(c.nombre+" "+i.getString());
+                s.add(c.nombre+"\n"+i.getString());
             }
             if(c.ideas.isEmpty()){
                 s.add(c.nombre+"\n");

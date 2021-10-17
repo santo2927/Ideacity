@@ -48,12 +48,10 @@ public class GestorIdeas extends AppCompatActivity {
         listaIdea=(ListView) findViewById(R.id.listIdeas);
         listaCarpetas=(ListView) findViewById(R.id.listCarpetas);
 
-        try {
-            listaCarpetasUsable = s.getCarpetas();
-            listaIdeaUsable = s.getIdeasFiltradas();
-        }catch (Exception e){
 
-        }
+        listaCarpetasUsable = s.getCarpetas();
+        listaIdeaUsable = s.getIdeasFiltradas();
+
 
         ArrayAdapter adaptadorIdea=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaIdeaUsable);
         ArrayAdapter adaptadorCarpeta=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaCarpetasUsable);

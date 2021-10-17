@@ -69,7 +69,13 @@ public class Saver {
 
                             }
                         }
-                        s.getLogedUser().getCarpeta(nombreCarpeta).addIdea(nombreIdea,descripcion,Integer.parseInt(prioridad),etiq);
+                        Integer i=0;
+                        try{
+                            i=Integer.parseInt(prioridad);
+                        }catch (Exception e){
+
+                        }
+                        s.getLogedUser().getCarpeta(nombreCarpeta).addIdea(nombreIdea,descripcion,i,etiq);
                     }}
                 }
 
