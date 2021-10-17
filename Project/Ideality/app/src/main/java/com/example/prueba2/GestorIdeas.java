@@ -1,5 +1,6 @@
 package com.example.prueba2;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -23,6 +25,7 @@ import androidx.recyclerview.widget.SortedList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItemClickListener {
@@ -113,8 +116,10 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public boolean onOptionsItemSelected (MenuItem opcion_menu){
+        Sistema s = Sistema.getSistema();
         int id = opcion_menu.getItemId();
         if (id==R.id.BotonIdea){
             Intent i = new Intent(this, CrearIdea.class);
@@ -122,14 +127,18 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
             return true;
         }
         else if(id==R.id.BotonAlfabeticamente){
-            Arrays.sort(listaIdeaUsable.toArray());
-            ArrayList<Idea> listaIdeas = (ArrayList<Idea>) listaIdeaUsable;
-            SortedList listaIdeaUsable;
-             Toast.makeText(this, "No existe ese usuario", Toast.LENGTH_SHORT).show();
-            return true;}
+                ArrayList<Sistema.User.Idea> listaIdeas = (ArrayList<Sistema.User.Idea>) s.ordenarIdeasNombre();
+                ArrayAdapter adaptadorIdea=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaIdeaUsable);
+                listaIdea.setAdapter(adaptadorIdea);
+                Toast.makeText(this, "Has ordenado tus ideas por nombre", Toast.LENGTH_SHORT).show();
+                return true;}
         else if(id==R.id.BotonAntiguedad){
-              Toast.makeText(this, "No existe ", Toast.LENGTH_SHORT).show();
-              return true;}
+                ArrayList<Sistema.User.Idea> listaIdeas = (ArrayList<Sistema.User.Idea>) s.ordenarIdeasPrioridad();
+                Collections.reverse(listaIdeas);
+                ArrayAdapter adaptadorIdea=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaIdeaUsable);
+                listaIdea.setAdapter(adaptadorIdea);
+                Toast.makeText(this, "Has ordenado tus ideas por prioridad", Toast.LENGTH_SHORT).show();
+                return true;}
 
 
         return super.onOptionsItemSelected(opcion_menu);

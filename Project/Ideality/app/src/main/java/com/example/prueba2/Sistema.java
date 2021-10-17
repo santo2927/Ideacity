@@ -1,11 +1,13 @@
 package com.example.prueba2;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.Settings;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,6 +21,7 @@ import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -38,10 +41,27 @@ public class Sistema implements Serializable {
         assert isLoged();
         return this.loggedUser.ideas;
     }
+    
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public List<User.Idea> ordenarIdeasNombre(){
+        this.getIdeas().sort(new Comparator<User.Idea>() {
+            @Override
+            public int compare(User.Idea o1, User.Idea o2) {
+                return o1.nombre.compareToIgnoreCase(o2.nombre);
+            }
+        });
+        return this.getIdeas();
+    }
 
-    public <List<User.Idea> ordenarIdeas(List<User.Idea> listaIdeas){
-    lisArrays.sort(listaIdeas.toArray());
-    return listaIdeas;
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public List<User.Idea> ordenarIdeasPrioridad(){
+        this.getIdeas().sort(new Comparator<User.Idea>() {
+            @Override
+            public int compare(User.Idea o1, User.Idea o2) {
+                return o1.prioridad.compareTo(o2.prioridad);
+            }
+        });
+        return this.getIdeas();
     }
 
     public Set<String> getIdeasSave(){
