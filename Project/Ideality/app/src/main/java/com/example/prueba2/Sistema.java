@@ -67,6 +67,14 @@ public class Sistema implements Serializable {
         this.loggedUser=null;
     }
 
+    public void addToCarpeta(User.Idea i) {
+        this.selectedFolder.addIdea(i.nombre,i.descripcion,i.prioridad,i.etiquetas);
+    }
+
+    public void deleteSelectedFolder() {
+        this.selectedFolder=null;
+    }
+
 
     class User{
         public String getName() {
@@ -229,6 +237,7 @@ public class Sistema implements Serializable {
 
     private static Sistema instancia = null;
 
+    private User.Carpeta selectedFolder=null;
     private HashMap<String, User> usuarios;
     private static Saver sb=null;
     private HashMap<Integer,String> etiquetas;
@@ -241,6 +250,10 @@ public class Sistema implements Serializable {
             s.add(u+"\n"+this.usuarios.get(u).contraseña);
         }
         return s;
+    }
+
+    public void selectFolder(User.Carpeta c){
+        this.selectedFolder=c;
     }
 
     public Set<String> getEtiquetas(){
