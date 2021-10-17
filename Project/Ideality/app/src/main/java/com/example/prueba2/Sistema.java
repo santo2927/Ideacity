@@ -73,6 +73,39 @@ public class Sistema implements Serializable {
         this.loggedUser=null;
     }
 
+    public void addToCarpeta(User.Idea i) {
+        this.selectedFolder.addIdea(i.nombre,i.descripcion,i.prioridad,i.etiquetas);
+        ArrayList<User.Idea> ideas = (ArrayList<User.Idea>)this.getIdeas();
+        int aux=0;
+        for(int r=0;r<ideas.size();r++){
+            if(ideas.get(r).nombre.equals(i.nombre)){
+                aux=r;
+            }
+        }
+        ideas.remove(aux);
+        this.getLogedUser().ideas=ideas;
+    }
+
+    public void deleteSelectedFolder() {
+        this.selectedFolder=null;
+    }
+    private User.Idea selectedIdea=null;
+
+    public User.Idea getSelectedIdea() {
+        return this.selectedIdea;
+    }
+
+    public void setSelectedIdea(User.Idea i){
+        this.selectedIdea=i;
+    }
+
+    public ArrayList<User.Idea> getFolderIdeas() {
+        return this.selectedFolder.ideas;
+    }
+
+    public String getFolderName() {
+        return this.selectedFolder.nombre;
+    }
 
     class User{
         public String getName() {
@@ -241,6 +274,7 @@ public class Sistema implements Serializable {
 
     private static Sistema instancia = null;
 
+    private User.Carpeta selectedFolder=null;
     private HashMap<String, User> usuarios;
     private static Saver sb=null;
     private HashMap<Integer,String> etiquetas;
@@ -253,6 +287,10 @@ public class Sistema implements Serializable {
             s.add(u+"\n"+this.usuarios.get(u).contraseña);
         }
         return s;
+    }
+
+    public void selectFolder(User.Carpeta c){
+        this.selectedFolder=c;
     }
 
     public Set<String> getEtiquetas(){
