@@ -11,8 +11,8 @@
                 android:title="Orden Alfabetico"
                 />
             <item
-                android:id="@+id/BotonAntiguedad"
-                android:title="Antiguedad" />
+                android:id="@+id/BotonPrioridad"
+                android:title="Por Prioridad" />
         </menu>
       </item>
     <item

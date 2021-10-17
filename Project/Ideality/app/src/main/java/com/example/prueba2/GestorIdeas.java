@@ -132,7 +132,7 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
                 listaIdea.setAdapter(adaptadorIdea);
                 Toast.makeText(this, "Has ordenado tus ideas por nombre", Toast.LENGTH_SHORT).show();
                 return true;}
-        else if(id==R.id.BotonAntiguedad){
+        else if(id==R.id.BotonPrioridad){
                 ArrayList<Sistema.User.Idea> listaIdeas = (ArrayList<Sistema.User.Idea>) s.ordenarIdeasPrioridad();
                 Collections.reverse(listaIdeas);
                 ArrayAdapter adaptadorIdea=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaIdeaUsable);
