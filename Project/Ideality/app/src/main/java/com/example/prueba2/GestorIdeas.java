@@ -93,8 +93,11 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
                 // TODO Auto-generated method stub
-                Sistema.User.Carpeta i = listaCarpetasUsable.get(pos);
-                Log.v("long clicked carpeta","pos: " + i);
+                Sistema.User.Carpeta c = listaCarpetasUsable.get(pos);
+                Log.v("long clicked carpeta","pos: " + c);
+                s.selectFolder(c);
+                Intent i = new Intent(GestorIdeas.this, SelectAddIdea.class);
+                startActivity(i);
                 return true;
             }
         });

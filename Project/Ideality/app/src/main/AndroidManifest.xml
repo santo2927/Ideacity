@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
         <activity
+            android:name=".SelectAddIdea"
+            android:exported="false" />
+        <activity
             android:name=".CrearIdea"
             android:exported="true" />
         <activity
@@ -22,7 +25,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".GestorIdeas" />
-
     </application>
 
 </manifest>
