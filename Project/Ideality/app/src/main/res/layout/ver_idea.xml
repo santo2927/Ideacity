@@ -52,8 +52,8 @@
 
     <ListView
         android:id="@+id/verEtiquetas"
-        android:layout_width="379dp"
-        android:layout_height="268dp"
+        android:layout_width="372dp"
+        android:layout_height="213dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.SparseBooleanArray;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -32,16 +34,18 @@ public class SelectAddIdea extends AppCompatActivity {
         for(int x=0;x<ids.size();x++){
             ideas[x]=ids.get(x).toString();
         }
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_multiple_choice,ideas);
+        adapter.notifyDataSetChanged();
+        lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         lv.setAdapter(adapter);
         ArrayList<Sistema.User.Idea> toadd=new ArrayList<>();
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for(int i=0;i<lv.getCount();i++){
-                    if(lv.isItemChecked(i)){
-                        toadd.add(idArr[i]);
-                    }
+                SparseBooleanArray checked = lv.getCheckedItemPositions();
+                for(int i=0;i<checked.size();i++){
+                    toadd.add(idArr[checked.keyAt(i)]);
                 }
                 for(Sistema.User.Idea x:toadd){
                     s.addToCarpeta(x);
@@ -53,11 +57,5 @@ public class SelectAddIdea extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item){
-        int id=item.getItemId();
-        if(id==R.id.item_done){
-            String
-        }
-    }
+
 }

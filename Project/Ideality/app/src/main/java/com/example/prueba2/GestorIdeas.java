@@ -62,12 +62,9 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
         listaIdea.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Sistema.User.Idea i = listaIdeaUsable.get(position);
-                verIdea vi = new verIdea();
-                vi.cambiarTexto(i);
+                s.setSelectedIdea(listaIdeaUsable.get(position));
                 Intent intent = new Intent(GestorIdeas.this, verIdea.class);
                 startActivity(intent);
-                Log.i("Idea",i.toString());
             }
         });
 
@@ -84,8 +81,9 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
         listaCarpetas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Sistema.User.Carpeta i = listaCarpetasUsable.get(position);
-                Log.i("Carpeta",i.toString());
+                s.selectFolder(listaCarpetasUsable.get(position));
+                Intent i = new Intent(GestorIdeas.this, listaIdeas.class);
+                startActivity(i);
             }
         });
 

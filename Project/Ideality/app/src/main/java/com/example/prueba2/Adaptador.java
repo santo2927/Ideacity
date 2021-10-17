@@ -25,8 +25,8 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolderDatos> {
 
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
-            nombre = (TextView) itemView.findViewById(R.id.Titulo);
-            descripcion = (TextView) itemView.findViewById(R.id.Descripcion);
+            nombre = (TextView) itemView.findViewById(R.id.tituloCarpeta);
+            //descripcion = (TextView) itemView.findViewById(R.id.Descripcion);
 
         }
     }

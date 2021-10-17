@@ -69,12 +69,37 @@ public class Sistema implements Serializable {
 
     public void addToCarpeta(User.Idea i) {
         this.selectedFolder.addIdea(i.nombre,i.descripcion,i.prioridad,i.etiquetas);
+        ArrayList<User.Idea> ideas = (ArrayList<User.Idea>)this.getIdeas();
+        int aux=0;
+        for(int r=0;r<ideas.size();r++){
+            if(ideas.get(r).nombre.equals(i.nombre)){
+                aux=r;
+            }
+        }
+        ideas.remove(aux);
+        this.getLogedUser().ideas=ideas;
     }
 
     public void deleteSelectedFolder() {
         this.selectedFolder=null;
     }
+    private User.Idea selectedIdea=null;
 
+    public User.Idea getSelectedIdea() {
+        return this.selectedIdea;
+    }
+
+    public void setSelectedIdea(User.Idea i){
+        this.selectedIdea=i;
+    }
+
+    public ArrayList<User.Idea> getFolderIdeas() {
+        return this.selectedFolder.ideas;
+    }
+
+    public String getFolderName() {
+        return this.selectedFolder.nombre;
+    }
 
     class User{
         public String getName() {
