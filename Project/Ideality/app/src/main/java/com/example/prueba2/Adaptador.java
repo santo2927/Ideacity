@@ -13,12 +13,23 @@ import java.util.ArrayList;
 
 public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolderDatos> {
 
-    ArrayList<String> listaDatos;
+    ArrayList<Sistema.User.Idea> listaDatos;
 
-    public Adaptador(ArrayList<String> listaDatos) {
+    public Adaptador(ArrayList<Sistema.User.Idea> listaDatos) {
         this.listaDatos = listaDatos;
     }
+    public class ViewHolderDatos extends RecyclerView.ViewHolder {
 
+        private TextView nombre;
+        private TextView descripcion;
+
+        public ViewHolderDatos(@NonNull View itemView) {
+            super(itemView);
+            nombre = (TextView) itemView.findViewById(R.id.Titulo);
+            descripcion = (TextView) itemView.findViewById(R.id.Descripcion);
+
+        }
+    }
 
     @Override
     public ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -28,7 +39,8 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolderDatos> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
-        holder.asignarDatos(listaDatos.get(position));
+        holder.nombre.setText(listaDatos.get(position).getNombre());
+        holder.descripcion.setText(listaDatos.get(position).getDescripcion());
     }
 
     @Override
@@ -36,17 +48,5 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolderDatos> {
         return listaDatos.size();
     }
 
-    public class ViewHolderDatos extends RecyclerView.ViewHolder {
 
-        TextView Dato;
-
-        public ViewHolderDatos(@NonNull View itemView) {
-            super(itemView);
-            Dato = (TextView) itemView.findViewById(R.id.idDato);
-        }
-
-        public void asignarDatos(String Datos) {
-            Dato.setText(Datos);
-        }
-    }
 }

@@ -4,15 +4,13 @@
 
     <item
         android:id="@+id/BotonOrdenar"
-        android:title="ordenar"
-        app:showAsAction="ifRoom" />
+        android:title="Ordenar" />
     <item
         android:id="@+id/BotonFiltrar"
-        android:title="Filtrar"
-        app:showAsAction="ifRoom" />
+        android:title="Filtrar" />
     <item
         android:id="@+id/BotonIdea"
         android:icon="@drawable/ic_baseline_add_24"
-        android:title="Idea"
-        app:showAsAction="always" />
+        android:title="+Idea" />
+    <item android:title="+Etiqueta" />
 </menu>

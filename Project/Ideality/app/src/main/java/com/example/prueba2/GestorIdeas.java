@@ -17,8 +17,10 @@ import java.util.ArrayList;
 
 public class GestorIdeas extends AppCompatActivity {
 
-    ArrayList<String> listaDatos;
-    RecyclerView recycler;
+    private ArrayList<Sistema.User.Idea> listaIdeas = new ArrayList<>();
+    private RecyclerView recycler;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager lManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +35,13 @@ public class GestorIdeas extends AppCompatActivity {
         //RECYCLE VIEW
         recycler = (RecyclerView) findViewById(R.id.RecycleId);
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-
-        listaDatos = new ArrayList<String>();
+        adapter = new Adaptador(listaIdeas);
+        recycler.setAdapter(adapter);
+        /*listaDatos = new ArrayList<String>();
         for (int i=0; i<=50;i++){
-            listaDatos.add("Dato # " +i+" ");
+            listaDatos.add("Dato # " +i+" ");*/
         }
 
-        Adaptador adapter = new Adaptador(listaDatos);
-        recycler.setAdapter(adapter);
-        //FIN RECYCLE
-    }
 
 
     //MENU
@@ -60,5 +59,13 @@ public class GestorIdeas extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(opcion_menu);
+    }
+
+    public ArrayList<Sistema.User.Idea> getListaIdeas() {
+        return listaIdeas;
+    }
+
+    public void setListaIdeas(ArrayList<Sistema.User.Idea> listaIdeas) {
+        this.listaIdeas = listaIdeas;
     }
 }

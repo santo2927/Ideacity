@@ -226,7 +226,7 @@ public class Sistema implements Serializable {
         return this.loggedUser!=null;
     }
 
-    public void createIdea(String nombre, String descripcion, int prioridad, String... etiquetas){
+    public void createIdea(String nombre, String descripcion, int prioridad, ArrayList<String> etiquetas){
         assert isLoged();
         ArrayList<Integer> aux =new ArrayList<>();
         for (String i:etiquetas){
