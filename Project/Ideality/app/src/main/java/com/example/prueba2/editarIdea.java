@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -62,29 +63,25 @@ public class editarIdea extends AppCompatActivity {
     }
 
     private void cargarEtiquetas() {
-        Chip chip = new Chip(this);
-        ChipDrawable drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.Widget_MaterialComponents_Chip_Entry);
-        chip.setChipDrawable(drawable);
-        chip.setCheckable(false);
-        chip.setClickable(false);
-        chip.setCheckedIconResource(R.drawable.ic_baseline_add_24);
-        chip.setIconStartPadding(3f);
-        chip.setPadding(60, 10, 60, 10);
+
 
         for (String etiq : s.getEtiquetasIdea(idea)){
+            Chip chip = new Chip(this);
+            ChipDrawable drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.Widget_MaterialComponents_Chip_Entry);
+            chip.setChipDrawable(drawable);
+            chip.setCheckable(false);
+            chip.setClickable(false);
+            chip.setCheckedIconResource(R.drawable.ic_baseline_add_24);
+            chip.setIconStartPadding(3f);
+            chip.setPadding(60, 10, 60, 10);
             chip.setText(etiq);
             chip.setOnCloseIconClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String nombre = chip.getText().toString();
                     chipGroup.removeView(chip);
-                    listaEtiquetas.remove(nombre);
-
                 }
             });
-            chipGroup.removeView(chip);
             chipGroup.addView(chip);
-            listaEtiquetas.add(etiq);
         }
     }
 
@@ -102,14 +99,11 @@ public class editarIdea extends AppCompatActivity {
         chip.setOnCloseIconClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nombre = chip.getText().toString();
                 chipGroup.removeView(chip);
-                listaEtiquetas.remove(nombre);
             }
         });
         chipGroup.addView(chip);
         //añadir lo escrito a la idea
-        listaEtiquetas.add(textInputEditText.getText().toString());
         textInputEditText.setText("");
 
     }
@@ -131,6 +125,12 @@ public class editarIdea extends AppCompatActivity {
             }catch(Exception e){
 
             }
+            Chip p;
+            for(int i=0; i<chipGroup.getChildCount(); i++){
+                p = (Chip) chipGroup.getChildAt(i);
+                listaEtiquetas.add(p.getText().toString());
+            }
+
             s.editarIdea( eTitulo.getText().toString(),  eDescripcion.getText().toString(),r, listaEtiquetas, idea);
             Intent i = new Intent(editarIdea.this, GestorIdeas.class);
             startActivity(i);
