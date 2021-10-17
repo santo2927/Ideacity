@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
         <activity
+            android:name=".CrearCarpeta"
+            android:exported="false" />
+        <activity
             android:name=".listaIdeas"
             android:exported="false" />
         <activity
@@ -29,8 +32,8 @@
         </activity>
         <activity android:name=".GestorIdeas" />
         <activity android:name=".verIdea" />
-        <activity android:name=".Filtrar"/>
-        <activity android:name=".editarIdea"/>
+        <activity android:name=".Filtrar" />
+        <activity android:name=".editarIdea" />
     </application>
 
 </manifest>

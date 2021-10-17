@@ -16,7 +16,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="293dp"
-            android:layout_height="124dp">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tituloCarpeta"
@@ -37,8 +37,8 @@
 
     <ListView
         android:id="@+id/listaIdasCarpeta"
-        android:layout_width="388dp"
-        android:layout_height="578dp"
+        android:layout_width="387dp"
+        android:layout_height="482dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

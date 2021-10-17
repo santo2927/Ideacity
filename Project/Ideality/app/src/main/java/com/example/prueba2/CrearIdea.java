@@ -90,6 +90,7 @@ public class CrearIdea extends AppCompatActivity {
 
             }
             s.createIdea( eTitulo.getText().toString(),  eDescripcion.getText().toString(),r, listaEtiquetas);
+            Sistema.guardarSistema();
             Intent i = new Intent(CrearIdea.this, GestorIdeas.class);
             startActivity(i);
             return true;

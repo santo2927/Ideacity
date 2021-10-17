@@ -139,7 +139,11 @@ public class GestorIdeas extends AppCompatActivity {
             case R.id.BotonFiltrar:
                 Intent j = new Intent(this, Filtrar.class);
                 startActivity(j);
-                return true;
+                break;
+            case R.id.BotonCarpeta:
+                j=new Intent(this,CrearCarpeta.class);
+                startActivity(j);
+
         }
         return super.onOptionsItemSelected(opcion_menu);
     }

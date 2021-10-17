@@ -132,6 +132,7 @@ public class editarIdea extends AppCompatActivity {
 
             }
             s.editarIdea( eTitulo.getText().toString(),  eDescripcion.getText().toString(),r, listaEtiquetas, idea);
+            Sistema.guardarSistema();
             Intent i = new Intent(editarIdea.this, GestorIdeas.class);
             startActivity(i);
             return true;

@@ -168,6 +168,10 @@ public class Sistema implements Serializable {
         return s;
     }
 
+    public void addFolder(String nombre) {
+        this.loggedUser.addCarpeta(nombre);
+    }
+
     class User{
         public String getName() {
             return this.nombre;

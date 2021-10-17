@@ -49,6 +49,7 @@ public class SelectAddIdea extends AppCompatActivity {
                 Intent i = new Intent(SelectAddIdea.this, GestorIdeas.class);
                 startActivity(i);
                 s.deleteSelectedFolder();
+                Sistema.guardarSistema();
             }
         });
     }
