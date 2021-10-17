@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Ideality</string>
     <string name="item1">Opción1</string>
+    <string name="done">Done</string>
 </resources>

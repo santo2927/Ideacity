@@ -126,6 +126,7 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
             startActivity(i);
             return true;
         }
+<<<<<<< Updated upstream
         else if(id==R.id.BotonAlfabeticamente){
                 ArrayList<Sistema.User.Idea> listaIdeas = (ArrayList<Sistema.User.Idea>) s.ordenarIdeasNombre();
                 ArrayAdapter adaptadorIdea=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaIdeaUsable);
@@ -141,6 +142,14 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
                 return true;}
 
 
+=======
+        else
+            if (id==R.id.BotonFiltrar){
+                Intent j = new Intent(this, Filtrar.class);
+                startActivity(j);
+                return true;
+            }
+>>>>>>> Stashed changes
         return super.onOptionsItemSelected(opcion_menu);
     }
 
