@@ -8,40 +8,93 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class GestorIdeas extends AppCompatActivity {
+public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-    private ArrayList<Sistema.User.Idea> listaIdeas = new ArrayList<>();
-    private RecyclerView recycler;
-    private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager lManager;
+    ListView listaIdea,listaCarpetas;
+    List<Sistema.User.Carpeta> listaCarpetasUsable;
+    List<Sistema.User.Idea> listaIdeaUsable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestor);
-
+        Sistema s=Sistema.getSistema();
        //Barra de herramientas
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
         //fin barra
 
         //RECYCLE VIEW
-        recycler = (RecyclerView) findViewById(R.id.RecycleId);
-        recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        adapter = new Adaptador(listaIdeas);
-        recycler.setAdapter(adapter);
-        /*listaDatos = new ArrayList<String>();
-        for (int i=0; i<=50;i++){
-            listaDatos.add("Dato # " +i+" ");*/
-        }
+        listaIdea=(ListView) findViewById(R.id.listIdeas);
+        listaCarpetas=(ListView) findViewById(R.id.listCarpetas);
 
+        /*Sistema.User u= s.getLogedUser();
+        s.addEtiqueta("Universidad",1);
+        s.getLogedUser().addCarpeta("La vida es dura");
+        ArrayList<Integer> ej = new ArrayList<>();
+        ej.add(1);
+        s.addIdea("Hola","La vida es grande pero ala lo es mas",7,ej);
+
+        Sistema.guardarSistema();*/
+
+        listaCarpetasUsable=s.getCarpetas();
+        listaIdeaUsable=s.getIdeas();
+
+        ArrayAdapter adaptadorIdea=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaIdeaUsable);
+        ArrayAdapter adaptadorCarpeta=new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaCarpetasUsable);
+
+        listaIdea.setAdapter(adaptadorIdea);
+        listaCarpetas.setAdapter(adaptadorCarpeta);
+
+        listaIdea.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Sistema.User.Idea i = listaIdeaUsable.get(position);
+                Log.i("Idea",i.toString());
+            }
+        });
+
+        listaIdea.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
+                // TODO Auto-generated method stub
+                Sistema.User.Idea i = listaIdeaUsable.get(pos);
+                Log.v("long clicked idea","pos: " + i);
+                return true;
+            }
+        });
+
+        listaCarpetas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Sistema.User.Carpeta i = listaCarpetasUsable.get(position);
+                Log.i("Carpeta",i.toString());
+            }
+        });
+
+        listaCarpetas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
+                // TODO Auto-generated method stub
+                Sistema.User.Carpeta i = listaCarpetasUsable.get(pos);
+                Log.v("long clicked carpeta","pos: " + i);
+                return true;
+            }
+        });
+    }
 
 
     //MENU
@@ -61,11 +114,8 @@ public class GestorIdeas extends AppCompatActivity {
         return super.onOptionsItemSelected(opcion_menu);
     }
 
-    public ArrayList<Sistema.User.Idea> getListaIdeas() {
-        return listaIdeas;
-    }
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-    public void setListaIdeas(ArrayList<Sistema.User.Idea> listaIdeas) {
-        this.listaIdeas = listaIdeas;
     }
 }

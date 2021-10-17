@@ -17,12 +17,41 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecycleId"
+    <EditText
+        android:id="@+id/titleCarpetas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text="Carpetas" />
+
+    <ListView
+        android:layout_marginTop="20dp"
+        android:id="@+id/listCarpetas"
+        android:layout_width="match_parent"
+        android:layout_height="237dp">
+
+    </ListView>
+
+    <EditText
+        android:id="@+id/titleIdeas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text="Ideas" />
+
+    <ListView
+        android:id="@+id/listIdeas"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="50dp" />
+        android:layout_marginBottom="10dp"
+        />
+
+
 </LinearLayout>
