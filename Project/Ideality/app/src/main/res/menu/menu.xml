@@ -4,7 +4,17 @@
 
     <item
         android:id="@+id/BotonOrdenar"
-        android:title="Ordenar" />
+        android:title="Ordenar">
+        <menu>
+            <item
+                android:id="@+id/BotonAlfabeticamente"
+                android:title="Orden Alfabetico"
+                />
+            <item
+                android:id="@+id/BotonAntiguedad"
+                android:title="Antiguedad" />
+        </menu>
+      </item>
     <item
         android:id="@+id/BotonFiltrar"
         android:title="Filtrar" />
@@ -13,4 +23,5 @@
         android:icon="@drawable/ic_baseline_add_24"
         android:title="+Idea" />
     <item android:title="+Etiqueta" />
+
 </menu>

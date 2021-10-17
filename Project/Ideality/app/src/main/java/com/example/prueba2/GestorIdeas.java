@@ -1,6 +1,7 @@
 package com.example.prueba2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,10 +16,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.SortedList;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItemClickListener {
@@ -103,6 +107,7 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
         getMenuInflater().inflate(R.menu.menu, mimenu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected (MenuItem opcion_menu){
         int id = opcion_menu.getItemId();
@@ -111,6 +116,17 @@ public class GestorIdeas extends AppCompatActivity implements AdapterView.OnItem
             startActivity(i);
             return true;
         }
+        else if(id==R.id.BotonAlfabeticamente){
+            Arrays.sort(listaIdeaUsable.toArray());
+            ArrayList<Idea> listaIdeas = (ArrayList<Idea>) listaIdeaUsable;
+            SortedList listaIdeaUsable;
+             Toast.makeText(this, "No existe ese usuario", Toast.LENGTH_SHORT).show();
+            return true;}
+        else if(id==R.id.BotonAntiguedad){
+              Toast.makeText(this, "No existe ", Toast.LENGTH_SHORT).show();
+              return true;}
+
+
         return super.onOptionsItemSelected(opcion_menu);
     }
 

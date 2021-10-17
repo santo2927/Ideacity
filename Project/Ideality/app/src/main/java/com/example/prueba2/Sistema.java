@@ -18,6 +18,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -36,6 +37,11 @@ public class Sistema implements Serializable {
     public List<User.Idea> getIdeas() {
         assert isLoged();
         return this.loggedUser.ideas;
+    }
+
+    public <List<User.Idea> ordenarIdeas(List<User.Idea> listaIdeas){
+    lisArrays.sort(listaIdeas.toArray());
+    return listaIdeas;
     }
 
     public Set<String> getIdeasSave(){
@@ -142,8 +148,14 @@ public class Sistema implements Serializable {
             }
 
             @Override
-            public int compareTo(@NonNull Idea o) {
-                return o.prioridad.compareTo(this.prioridad);
+            public int compareTo(Idea o) {
+                if (prioridad < o.prioridad) {
+                    return -1;
+                }
+                if (prioridad > o.prioridad) {
+                    return 1;
+                }
+                return 0;
             }
 
             @Override
