@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ListView
+        android:id="@+id/listCheckEtiquetas"
+        android:layout_width="340dp"
+        android:layout_height="459dp"
+        android:layout_below="@+id/etiquetasTitle"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="139dp"
+        android:text="CheckBox"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.495" />
+
+    <TextView
+        android:id="@+id/etiquetasTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="4dp"
+        android:text="Etiquetas para filtrar"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/listCheckEtiquetas"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/searchEtiquetas"
+        android:layout_width="wrap_content"
+        android:layout_height="71dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginBottom="35dp"
+        android:text="OK"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listCheckEtiquetas" />
+
+</RelativeLayout>

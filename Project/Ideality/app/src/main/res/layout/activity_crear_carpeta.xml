@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/saveFolder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CrearCarpeta">
+
+    <TextView
+        android:id="@+id/testViewCarpeta"
+        android:layout_width="221dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="56dp"
+        android:text="Inserte el nobmre de su nueva carpeta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/butonCreateFolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="108dp"
+        android:text="OK"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textNameFolder" />
+
+    <EditText
+        android:id="@+id/textNameFolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="84dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/testViewCarpeta" />
+</androidx.constraintlayout.widget.ConstraintLayout>
