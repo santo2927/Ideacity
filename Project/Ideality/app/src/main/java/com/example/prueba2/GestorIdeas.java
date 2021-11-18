@@ -141,7 +141,11 @@ public class GestorIdeas extends AppCompatActivity {
             case R.id.BotonCarpeta:
                 j=new Intent(this,CrearCarpeta.class);
                 startActivity(j);
-
+                break;
+            case R.id.BotonEliminarCarpeta:
+                Intent k = new Intent(this, DeleteFolder.class);
+                startActivity(k);
+                break;
         }
         return super.onOptionsItemSelected(opcion_menu);
     }
