@@ -47,7 +47,6 @@ public class SelectDeleteIdeas extends AppCompatActivity {
                 for(Sistema.User.Idea x:toadd){
                     s.deleteIdea(x);
                 }
-                Toast.makeText(SelectDeleteIdeas.this, String.valueOf( s.getIdeas().size()), Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(SelectDeleteIdeas.this, GestorIdeas.class);
                 startActivity(i);
                 Sistema.guardarSistema();
