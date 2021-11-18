@@ -141,6 +141,10 @@ public class GestorIdeas extends AppCompatActivity {
             case R.id.BotonCarpeta:
                 j=new Intent(this,CrearCarpeta.class);
                 startActivity(j);
+            case R.id.BotonEliminarIdea:
+                Toast.makeText(this, String.valueOf( s.getIdeas().size()) , Toast.LENGTH_SHORT).show();
+                Intent x= new Intent(this, SelectDeleteIdeas.class);
+                startActivity(x);
 
         }
         return super.onOptionsItemSelected(opcion_menu);

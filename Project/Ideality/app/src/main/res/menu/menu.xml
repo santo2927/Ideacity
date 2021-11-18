@@ -24,5 +24,8 @@
         android:title="+Idea" />
     <item android:title="+Carpeta"
         android:id="@+id/BotonCarpeta"/>
+    <item
+        android:id="@+id/BotonEliminarIdea"
+        android:title="Eliminar Ideas" />
 
 </menu>

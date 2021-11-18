@@ -109,10 +109,23 @@ public class Sistema implements Serializable {
         this.getLogedUser().ideas=ideas;
     }
 
+    public void deleteIdea(User.Idea i){
+        ArrayList<User.Idea> ideas = (ArrayList<User.Idea>)this.getIdeas();
+        int aux=0;
+        for(int r=0;r<ideas.size();r++){
+            if(ideas.get(r).nombre.equals(i.nombre)){
+                aux=r;
+            }
+        }
+        ideas.remove(aux);
+        this.getLogedUser().ideas=ideas;
+    }
+
     public void deleteSelectedFolder() {
         this.selectedFolder=null;
     }
     private User.Idea selectedIdea=null;
+
 
     public User.Idea getSelectedIdea() {
         return this.selectedIdea;
