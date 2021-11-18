@@ -146,6 +146,13 @@ public class GestorIdeas extends AppCompatActivity {
                 Intent k = new Intent(this, DeleteFolder.class);
                 startActivity(k);
                 break;
+            case R.id.BotonEliminarIdea:
+                Intent x= new Intent(this, SelectDeleteIdeas.class);
+                startActivity(x);
+                break;
+            case R.id.BotonAyuda:
+                setContentView(R.layout.activity_ayuda);
+                break;
         }
         return super.onOptionsItemSelected(opcion_menu);
     }

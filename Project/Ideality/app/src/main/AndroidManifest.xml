@@ -35,6 +35,7 @@
         <activity android:name=".Filtrar" />
         <activity android:name=".editarIdea" />
         <activity android:name=".DeleteFolder"/>
+        <activity android:name=".SelectDeleteIdeas"/>
     </application>
 
 </manifest>

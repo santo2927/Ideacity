@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="46dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Pantalla de Ayuda"
+                android:textSize="45sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="13dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="¿Cómo creo una idea?"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="112dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Debes hacer click sobre los 3 puntos situados en la esquina superior derecha, una vez hecho eso se abrira un panel con opciones y debes hacer click en a que pone '+idea' lo que te llevara a una nueva pantalla en la que deberas rellenar los campos que aparecen una vez hecho esto solo falta dar en el tick de la esquina superior derecha y la idea se añadira automaticamente"
+                android:textSize="25sp"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="164dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="¿Como filtro ideas?"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="502dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Debes hacer click sobre los 3 puntos situados en la esquina superior derecha, una vez hecho eso se abrira un panel con opciones y debes hacer click en a que pone 'Filtrar' lo que te llevara a una nueva pantalla en la que deberas escribir el nombre de la etiqueta por la que quieres filtrar, una vez hecho esto das a 'ok' y solo se mostraran las ideas con esa etiqueta "
+                android:textSize="25sp"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="343dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="¿Como creo carpetas?"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="301dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Debes hacer click sobre los 3 puntos situados en la esquina superior derecha, una vez hecho eso se abrira un panel con opciones y debes hacer click en a que pone '+Carpeta' lo que te llevara a una nueva pantalla en la que deberas escribir el nombre de la carpeta, una vez hecho esto das a 'ok' y la carpeta se creara automaticamente "
+                android:textSize="25sp"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="-16dp"
+                tools:layout_editor_absoluteY="677dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="¿Como ordeno las ideas?"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="-16dp"
+                tools:layout_editor_absoluteY="667dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Debes hacer click sobre los 3 puntos situados en la esquina superior derecha, una vez hecho eso se abrira un panel con opciones y debes hacer click en a que pone 'Ordenar' lo que abrira un subpanel que te dara 2 opciones ordenarlo alfabeticamente o por prioridad una vez elijas una de estas 2 opciones las ideas se ordenaran automaticamente segun el criterio seleccionado "
+                android:textSize="25sp"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="-16dp"
+                tools:layout_editor_absoluteY="542dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
