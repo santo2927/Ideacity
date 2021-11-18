@@ -144,7 +144,8 @@ public class GestorIdeas extends AppCompatActivity {
             case R.id.BotonEliminarIdea:
                 Intent x= new Intent(this, SelectDeleteIdeas.class);
                 startActivity(x);
-
+            case R.id.BotonAyuda:
+                setContentView(R.layout.activity_ayuda);
         }
         return super.onOptionsItemSelected(opcion_menu);
     }

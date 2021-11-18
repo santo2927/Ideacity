@@ -27,5 +27,8 @@
     <item
         android:id="@+id/BotonEliminarIdea"
         android:title="Eliminar Ideas" />
+    <item
+        android:id="@+id/BotonAyuda"
+        android:title="Ayuda" />
 
 </menu>
