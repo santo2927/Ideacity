@@ -109,10 +109,36 @@ public class Sistema implements Serializable {
         this.getLogedUser().ideas=ideas;
     }
 
+
+    public void deleteFolder(User.Carpeta c){
+        ArrayList<User.Carpeta> carpetas = (ArrayList<User.Carpeta>) this.getCarpetas();
+        int aux=0;
+        for(int r=0;r<carpetas.size();r++){
+            if(carpetas.get(r).nombre.equals(c.nombre)){
+                aux=r;
+            }
+        }
+        carpetas.remove(aux);
+        this.getLogedUser().carpetas=carpetas;
+
+    public void deleteIdea(User.Idea i){
+        ArrayList<User.Idea> ideas = (ArrayList<User.Idea>)this.getIdeas();
+        int aux=0;
+        for(int r=0;r<ideas.size();r++){
+            if(ideas.get(r).nombre.equals(i.nombre)){
+                aux=r;
+            }
+        }
+        ideas.remove(aux);
+        this.getLogedUser().ideas=ideas;
+
+    }
+
     public void deleteSelectedFolder() {
         this.selectedFolder=null;
     }
     private User.Idea selectedIdea=null;
+
 
     public User.Idea getSelectedIdea() {
         return this.selectedIdea;
@@ -307,6 +333,10 @@ public class Sistema implements Serializable {
 
             public void addIdea(String nombre, String descripcion, Integer prioridad, ArrayList<Integer> etiquetas,Integer color){
                 this.ideas.add(new Idea(nombre,descripcion,prioridad,etiquetas,color));
+            }
+
+            public ArrayList<Idea> getIdeas(){
+                return ideas;
             }
 
 
