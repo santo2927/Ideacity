@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipDrawable;
@@ -22,18 +23,37 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 
+import yuku.ambilwarna.AmbilWarnaDialog;
+
 public class editarIdea extends AppCompatActivity {
 
-    private TextView eTitulo, eDescripcion, ePrioridad;
+    private TextView eTitulo, eDescripcion, ePrioridad, eColor;
     private ChipGroup chipGroup;
-    private Button aEtiqueta;
+    private Button bColor, aEtiqueta;
+    private Integer colorElegido;
     private EditText textInputEditText;
     private ArrayList<String> listaEtiquetas = new ArrayList<>();
-    private Sistema s=Sistema.getSistema();
+    private Sistema s = Sistema.getSistema();
     private Sistema.User.Idea idea;
 
+    public void abrirPaletaColores() {
+        AmbilWarnaDialog colorEscogido = new AmbilWarnaDialog(this, colorElegido, new AmbilWarnaDialog.OnAmbilWarnaListener() {
+            @Override
+            public void onCancel(AmbilWarnaDialog dialog) {
+
+            }
+
+            @Override
+            public void onOk(AmbilWarnaDialog dialog, int color) {
+                colorElegido = color;
+                eColor.setTextColor(colorElegido);
+            }
+        });
+        colorEscogido.show();
+    }
+
     @Override
-    protected void onCreate (Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
 
         idea = s.getSelectedIdea();
         s.setSelectedIdea(null);
@@ -42,10 +62,23 @@ public class editarIdea extends AppCompatActivity {
         eTitulo = findViewById(R.id.eText);
         eDescripcion = findViewById(R.id.eDescripcion);
         ePrioridad = findViewById(R.id.ePrioridad);
-        aEtiqueta = (Button) findViewById(R.id.aEtiqueta);
+        aEtiqueta = findViewById(R.id.aEtiqueta);
+        bColor = findViewById(R.id.butonColor);
+        eColor = findViewById(R.id.viewColor);
+        colorElegido = idea.getColor();
 
-        chipGroup = (ChipGroup) findViewById(R.id.chip);
-        textInputEditText = (TextInputEditText) findViewById(R.id.textInputEditText);
+        eColor.setTextColor(idea.getColor());
+
+        bColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirPaletaColores();
+            }
+        });
+
+
+        chipGroup = findViewById(R.id.chip);
+        textInputEditText = findViewById(R.id.textInputEditText);
 
 
         eTitulo.setText(idea.getNombre());
@@ -65,7 +98,7 @@ public class editarIdea extends AppCompatActivity {
     private void cargarEtiquetas() {
 
 
-        for (String etiq : s.getEtiquetasIdea(idea)){
+        for (String etiq : s.getEtiquetasIdea(idea)) {
             Chip chip = new Chip(this);
             ChipDrawable drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.Widget_MaterialComponents_Chip_Entry);
             chip.setChipDrawable(drawable);
@@ -110,28 +143,28 @@ public class editarIdea extends AppCompatActivity {
 
     //MENU
     @Override
-    public boolean onCreateOptionsMenu (Menu mimenuidea) {
+    public boolean onCreateOptionsMenu(Menu mimenuidea) {
         getMenuInflater().inflate(R.menu.menu_idea, mimenuidea);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected (MenuItem opcion_menu_idea){
+    public boolean onOptionsItemSelected(MenuItem opcion_menu_idea) {
         int id = opcion_menu_idea.getItemId();
-        if (id==R.id.guardarIdea){
-            Integer r =0;
-            try{
-                r=Integer.parseInt(ePrioridad.getText().toString());
-            }catch(Exception e){
+        if (id == R.id.guardarIdea) {
+            Integer r = 0;
+            try {
+                r = Integer.parseInt(ePrioridad.getText().toString());
+            } catch (Exception e) {
 
             }
             Chip p;
-            for(int i=0; i<chipGroup.getChildCount(); i++){
+            for (int i = 0; i < chipGroup.getChildCount(); i++) {
                 p = (Chip) chipGroup.getChildAt(i);
                 listaEtiquetas.add(p.getText().toString());
             }
-
-            s.editarIdea( eTitulo.getText().toString(),  eDescripcion.getText().toString(),r, listaEtiquetas, idea);
+            idea.setColor(this.colorElegido);
+            s.editarIdea(eTitulo.getText().toString(), eDescripcion.getText().toString(), r, listaEtiquetas, idea);
             Sistema.guardarSistema();
             Intent i = new Intent(editarIdea.this, GestorIdeas.class);
             startActivity(i);

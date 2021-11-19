@@ -97,7 +97,7 @@ public class Sistema implements Serializable {
     }
 
     public void addToCarpeta(User.Idea i) {
-        this.selectedFolder.addIdea(i.nombre,i.descripcion,i.prioridad,i.etiquetas);
+        this.selectedFolder.addIdea(i.nombre,i.descripcion,i.prioridad,i.etiquetas,i.color);
         ArrayList<User.Idea> ideas = (ArrayList<User.Idea>)this.getIdeas();
         int aux=0;
         for(int r=0;r<ideas.size();r++){
@@ -198,19 +198,22 @@ public class Sistema implements Serializable {
             private String nombre;
             private String descripcion;
             private Integer prioridad;
+            private Integer color;
             private ArrayList<Integer> etiquetas;
 
-            public Idea(String nombre, String descripcion, int prioridad, ArrayList<Integer> etiquetas) {
+            public Idea(String nombre, String descripcion, int prioridad, ArrayList<Integer> etiquetas,Integer color) {
                 this.nombre = nombre;
                 this.descripcion=descripcion;
                 this.prioridad=prioridad;
                 this.etiquetas=etiquetas;
+                this.color=color;
             }
             public Idea(Idea other){
                 this.nombre = other.nombre;
                 this.descripcion=other.descripcion;
                 this.prioridad=other.prioridad;
                 this.etiquetas=other.etiquetas;
+                this.color=other.color;
             }
 
             public ArrayList<Integer> getEtiquetas() {
@@ -245,6 +248,14 @@ public class Sistema implements Serializable {
                 this.nombre = nombre;
             }
 
+            public Integer getColor() {
+                return color;
+            }
+
+            public void setColor(Integer color) {
+                this.color = color;
+            }
+
             @Override
             public int compareTo(Idea o) {
                 if (prioridad < o.prioridad) {
@@ -267,7 +278,7 @@ public class Sistema implements Serializable {
                 for(Integer i:etiquetas){
                     s+=i+"\n";
                 }
-                return String.format("%s\n%s\n%d\n%s",nombre,descripcion,prioridad,s);
+                return String.format("%s\n%s\n%d\n%d\n%s",nombre,descripcion,prioridad,color,s);
             }
 
             public boolean containsEtiqueta(ArrayList<Integer> filter) {
@@ -294,8 +305,8 @@ public class Sistema implements Serializable {
                 return nombre;
             }
 
-            public void addIdea(String nombre, String descripcion, Integer prioridad, ArrayList<Integer> etiquetas){
-                this.ideas.add(new Idea(nombre,descripcion,prioridad,etiquetas));
+            public void addIdea(String nombre, String descripcion, Integer prioridad, ArrayList<Integer> etiquetas,Integer color){
+                this.ideas.add(new Idea(nombre,descripcion,prioridad,etiquetas,color));
             }
 
 
@@ -315,7 +326,7 @@ public class Sistema implements Serializable {
 
         private void moverACarpeta(int idea,int carpeta){
             Idea i = this.ideas.get(idea);
-            this.carpetas.get(carpeta).addIdea(i.nombre,i.descripcion,i.prioridad,i.etiquetas);
+            this.carpetas.get(carpeta).addIdea(i.nombre,i.descripcion,i.prioridad,i.etiquetas,i.color);
             this.ideas.remove(idea);
         }
 
@@ -337,8 +348,8 @@ public class Sistema implements Serializable {
             moverACarpeta(n,i);
         }
 
-        public void addIdea(String nombre, String descripcion, Integer prioridad, ArrayList<Integer> etiquetas){
-            this.ideas.add(new Idea(nombre,descripcion,prioridad,etiquetas));
+        public void addIdea(String nombre, String descripcion, Integer prioridad, ArrayList<Integer> etiquetas,Integer color){
+            this.ideas.add(new Idea(nombre,descripcion,prioridad,etiquetas,color));
         }
 
 
@@ -434,13 +445,13 @@ public class Sistema implements Serializable {
         return this.loggedUser!=null;
     }
 
-    public void createIdea(String nombre, String descripcion, int prioridad, ArrayList<String> etiquetas){
+    public void createIdea(String nombre, String descripcion, int prioridad, ArrayList<String> etiquetas,Integer color){
         assert isLoged();
         ArrayList<Integer> aux =new ArrayList<>();
         for (String i:etiquetas){
             aux.add(getEtiqueta(i));
         }
-        this.loggedUser.addIdea(nombre, descripcion, prioridad, aux);
+        this.loggedUser.addIdea(nombre, descripcion, prioridad, aux,color);
     }
 
     public void editarIdea(String nombre, String descripcion, int prioridad, ArrayList<String> etiquetas, Sistema.User.Idea idea){
@@ -455,9 +466,9 @@ public class Sistema implements Serializable {
         idea.setEtiquetas(aux);
     }
 
-    public void addIdea(String nombre, String descripcion, int prioridad, ArrayList<Integer> etiquetas){
+    public void addIdea(String nombre, String descripcion, int prioridad, ArrayList<Integer> etiquetas,Integer color){
         assert isLoged();
-        this.loggedUser.addIdea(nombre, descripcion, prioridad, etiquetas);
+        this.loggedUser.addIdea(nombre, descripcion, prioridad, etiquetas,color);
     }
 
     public Integer createEtiqueta(String s){

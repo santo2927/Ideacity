@@ -39,9 +39,14 @@
         <entry key="..\:/vsp/GIT/Ideacity/Project/Ideality/app/src/main/res/drawable/ic_baseline_done_24.xml" value="0.3828125" />
         <entry key="..\:/vsp/GIT/Ideacity/Project/Ideality/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
         <entry key="..\:/vsp/GIT/Ideacity/Project/Ideality/app/src/main/res/layout/activity_crear_idea.xml" value="0.2418478260869565" />
+        <entry key="..\:/vsp/GIT/Ideacity/Project/Ideality/app/src/main/res/layout/activity_editar_idea.xml" value="0.5" />
+        <entry key="..\:/vsp/GIT/Ideacity/Project/Ideality/app/src/main/res/layout/activity_filtrar.xml" value="0.15" />
+        <entry key="..\:/vsp/GIT/Ideacity/Project/Ideality/app/src/main/res/layout/activity_gestor.xml" value="0.33" />
         <entry key="..\:/vsp/GIT/Ideacity/Project/Ideality/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/vsp/GIT/Ideacity/Project/Ideality/app/src/main/res/layout/activity_select_add_idea.xml" value="0.20520833333333333" />
         <entry key="..\:/vsp/GIT/Ideacity/Project/Ideality/app/src/main/res/layout/lista_items.xml" value="0.2418478260869565" />
         <entry key="..\:/vsp/GIT/Ideacity/Project/Ideality/app/src/main/res/layout/success.xml" value="0.2418478260869565" />
+        <entry key="..\:/vsp/GIT/Ideacity/Project/Ideality/app/src/main/res/layout/text_row_item.xml" value="0.36666666666666664" />
         <entry key="..\:/vsp/GIT/Ideacity/Project/Ideality/app/src/main/res/layout/ver_idea.xml" value="0.33" />
         <entry key="..\:/vsp/GIT/Ideacity/Project/Ideality/app/src/main/res/menu/menu.xml" value="0.36666666666666664" />
         <entry key="..\:/vsp/GIT/Ideacity/Project/Ideality/app/src/main/res/menu/menu_idea.xml" value="0.36666666666666664" />

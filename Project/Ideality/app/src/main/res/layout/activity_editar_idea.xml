@@ -38,8 +38,8 @@
 
     <EditText
         android:id="@+id/eDescripcion"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_width="385dp"
+        android:layout_height="195dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -77,35 +77,62 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:textColorHint="#ACACAC"
         android:hint="Etiquetas"
         android:minHeight="48dp"
+        android:textColorHint="#ACACAC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ePrioridad" />
 
     <Button
+        android:id="@+id/butonColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Elegir Color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.681"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
+
+    <Button
         android:id="@+id/aEtiqueta"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="20dp"
         android:onClick="btnClick"
         android:text="Añadir Etiqueta"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/butonColor" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chip"
         android:layout_width="379dp"
         android:layout_height="90dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.812"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aEtiqueta">
 
     </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:id="@+id/viewColor"
+        android:layout_width="71dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginBottom="4dp"
+        android:text="COLOR"
+        app:layout_constraintBottom_toTopOf="@+id/aEtiqueta"
+        app:layout_constraintEnd_toStartOf="@+id/butonColor"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
+        app:layout_constraintVertical_bias="0.125" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

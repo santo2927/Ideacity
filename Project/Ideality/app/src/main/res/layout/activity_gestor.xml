@@ -27,13 +27,13 @@
         android:minHeight="48dp"
         android:text="Carpetas" />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="20dp"
         android:id="@+id/listCarpetas"
         android:layout_width="match_parent"
         android:layout_height="237dp">
 
-    </ListView>
+    </androidx.recyclerview.widget.RecyclerView>
 
     <EditText
         android:id="@+id/titleIdeas"
@@ -45,13 +45,24 @@
         android:minHeight="48dp"
         android:text="Ideas" />
 
-    <ListView
-        android:id="@+id/listIdeas"
-        android:layout_marginTop="20dp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="10dp"
-        />
+        android:layout_height="228dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listIdeas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
 
 
 </LinearLayout>

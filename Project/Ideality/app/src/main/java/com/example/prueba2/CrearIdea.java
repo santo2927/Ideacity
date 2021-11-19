@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -89,7 +90,7 @@ public class CrearIdea extends AppCompatActivity {
             }catch(Exception e){
 
             }
-            s.createIdea( eTitulo.getText().toString(),  eDescripcion.getText().toString(),r, listaEtiquetas);
+            s.createIdea( eTitulo.getText().toString(),  eDescripcion.getText().toString(),r, listaEtiquetas, Color.BLACK);
             Sistema.guardarSistema();
             Intent i = new Intent(CrearIdea.this, GestorIdeas.class);
             startActivity(i);
