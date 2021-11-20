@@ -5,7 +5,7 @@
     android:id="@+id/eEtiquetas"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/MoradoFondo"
     android:onClick="btnClick"
     tools:context=".editarIdea">
 
@@ -19,6 +19,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
+        android:background="@drawable/rectangles"
         android:id="@+id/eText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -38,12 +39,13 @@
 
     <EditText
         android:id="@+id/eDescripcion"
-        android:layout_width="385dp"
-        android:layout_height="195dp"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@null"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rectangles"
         android:backgroundTint="#8E8E8E"
         android:backgroundTintMode="add"
         android:ems="10"
@@ -51,11 +53,13 @@
         android:hint="Descripción"
         android:inputType="textMultiLine"
         android:textColorHint="#ACACAC"
+        app:layout_constraintBottom_toTopOf="@+id/ePrioridad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eText" />
 
     <EditText
+        android:background="@drawable/rectangles"
         android:id="@+id/ePrioridad"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -71,6 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/eDescripcion" />
 
     <com.google.android.material.textfield.TextInputEditText
+        android:background="@drawable/rectangles"
         android:id="@+id/textInputEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -84,37 +89,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ePrioridad" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/butonColor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="109dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="70dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/botones"
         android:text="Elegir Color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.681"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/viewColor"
         app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/aEtiqueta"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="114dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/botones"
         android:onClick="btnClick"
         android:text="Añadir Etiqueta"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/butonColor" />
+        app:layout_constraintTop_toBottomOf="@+id/viewColor" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chip"
-        android:layout_width="379dp"
-        android:layout_height="90dp"
+        android:layout_width="352dp"
+        android:layout_height="94dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.812"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aEtiqueta">
 
@@ -122,17 +129,18 @@
 
     <TextView
         android:id="@+id/viewColor"
-        android:layout_width="71dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginBottom="4dp"
+        android:layout_width="102dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rectangles"
+        android:gravity="center"
         android:text="COLOR"
-        app:layout_constraintBottom_toTopOf="@+id/aEtiqueta"
-        app:layout_constraintEnd_toStartOf="@+id/butonColor"
-        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
-        app:layout_constraintVertical_bias="0.125" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

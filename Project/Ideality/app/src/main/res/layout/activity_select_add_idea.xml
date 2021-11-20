@@ -4,37 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SelectAddIdea">
+    tools:context=".SelectAddIdea"
+    android:background="@color/MoradoFondo">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/MoradoToolbar"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        tools:ignore="MissingConstraints" />
 
     <ListView
         android:id="@+id/listCheck"
         android:layout_width="318dp"
         android:layout_height="477dp"
+        android:background="@drawable/rectangles"
         android:text="CheckBox"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar2" />
 
     <TextView
         android:id="@+id/selectIdeasTitle"
-        android:layout_width="266dp"
+        android:layout_width="287dp"
         android:layout_height="51dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginBottom="60dp"
-
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rectangles"
+        android:gravity="center"
         android:text="Ideas a añadir"
+        android:textColor="@color/black"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/listCheck"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar2" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/searchIdeas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="44dp"
+        android:background="@drawable/botones"
         android:text="OK"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listCheck" />

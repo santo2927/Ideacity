@@ -3,12 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/MoradoFondo">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar2"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#684AD5"
+        android:background="@color/MoradoToolbar"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         tools:ignore="MissingConstraints" />
@@ -21,7 +23,10 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="TextView"
+        android:gravity="center_horizontal"
+        android:background="@drawable/rectangles"
         android:textSize="20sp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/my_toolbar2" />
@@ -33,8 +38,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/rectangles"
+        android:gravity="center_horizontal"
         android:text="TextView"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/verTitulo" />
 
@@ -45,18 +54,30 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/rectangles"
+        android:gravity="center_horizontal"
         android:text="TextView"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/verDescripcion" />
 
     <ListView
         android:id="@+id/verEtiquetas"
-        android:layout_width="372dp"
-        android:layout_height="213dp"
+        android:layout_width="330dp"
+        android:layout_height="211dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rectangles"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/verPrioridad" />
+        app:layout_constraintTop_toBottomOf="@+id/verPrioridad"
+        app:layout_constraintVertical_bias="0.176" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

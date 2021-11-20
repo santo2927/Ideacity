@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/MoradoFondo"
     android:orientation="vertical"
     tools:context=".GestorIdeas">
 
@@ -15,39 +15,76 @@
         android:layout_height="?attr/actionBarSize"
         android:background="#684AD5"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:gravity="center"
         android:id="@+id/titleCarpetas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rectangles"
         android:ems="10"
-        android:inputType="none"
+        android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Carpetas" />
+        android:text="Carpetas"
+        app:layout_constraintBottom_toTopOf="@+id/listCarpetas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="20dp"
+        android:background="@drawable/rectangles"
         android:id="@+id/listCarpetas"
         android:layout_width="match_parent"
-        android:layout_height="237dp">
+        android:layout_height="237dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/titleIdeas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleCarpetas">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <EditText
+        android:gravity="center"
+        android:background="@drawable/rectangles"
         android:id="@+id/titleIdeas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
-        android:inputType="none"
+        android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Ideas" />
+        android:text="Ideas"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listCarpetas" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="228dp">
+        android:layout_height="228dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/rectangles"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleIdeas">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listIdeas"
@@ -62,7 +99,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        tools:layout_editor_absoluteX="-39dp" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

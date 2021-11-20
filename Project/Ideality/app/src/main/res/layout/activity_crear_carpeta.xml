@@ -5,37 +5,44 @@
     android:id="@+id/saveFolder"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CrearCarpeta">
+    tools:context=".CrearCarpeta"
+    android:background="@color/MoradoFondo">
 
-    <TextView
-        android:id="@+id/testViewCarpeta"
-        android:layout_width="221dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="56dp"
-        android:text="Inserte el nobmre de su nueva carpeta"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/MoradoToolbar"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        tools:ignore="MissingConstraints" />
 
-    <Button
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:background="@drawable/botones"
         android:id="@+id/butonCreateFolder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="20dp"
         android:text="OK"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textNameFolder" />
 
     <EditText
         android:id="@+id/textNameFolder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="84dp"
+        android:layout_width="221dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="252dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rectangles"
         android:ems="10"
+        android:hint="Nombre"
         android:inputType="textPersonName"
-        android:text="Name"
+
+        app:layout_constraintBottom_toTopOf="@+id/butonCreateFolder"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testViewCarpeta" />
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

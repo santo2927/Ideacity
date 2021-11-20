@@ -4,44 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".listaIdeas">
+    tools:context=".listaIdeas"
+    android:background="@color/MoradoFondo">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/MoradoToolbar"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        tools:ignore="MissingConstraints" />
 
     <androidx.cardview.widget.CardView
-            android:id="@+id/cardCarpeta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        android:id="@+id/cardCarpeta"
+        android:layout_width="379dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar2">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="293dp"
+            android:layout_width="378dp"
             android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tituloCarpeta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
                 android:text="Titulo"
                 android:textSize="34sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
     <ListView
         android:id="@+id/listaIdasCarpeta"
-        android:layout_width="387dp"
-        android:layout_height="482dp"
+        android:layout_width="361dp"
+        android:layout_height="510dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rectangles"
+        android:text="CheckBox"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardCarpeta" />
+        app:layout_constraintTop_toBottomOf="@+id/cardCarpeta"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
