@@ -45,7 +45,7 @@ public class DeleteFolder extends AppCompatActivity {
                 }
                 for(Sistema.User.Carpeta x:toadd){
                     for(Sistema.User.Idea y:x.getIdeas()){
-                        s.addIdea(y.getNombre(),y.getDescripcion(),y.getPrioridad(),y.getEtiquetas());
+                        s.addIdea(y.getNombre(),y.getDescripcion(),y.getPrioridad(),y.getEtiquetas(),y.getColor());
                     }
                     s.deleteFolder(x);
                 }

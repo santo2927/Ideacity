@@ -110,16 +110,17 @@ public class Sistema implements Serializable {
     }
 
 
-    public void deleteFolder(User.Carpeta c){
+    public void deleteFolder(User.Carpeta c) {
         ArrayList<User.Carpeta> carpetas = (ArrayList<User.Carpeta>) this.getCarpetas();
-        int aux=0;
-        for(int r=0;r<carpetas.size();r++){
-            if(carpetas.get(r).nombre.equals(c.nombre)){
-                aux=r;
+        int aux = 0;
+        for (int r = 0; r < carpetas.size(); r++) {
+            if (carpetas.get(r).nombre.equals(c.nombre)) {
+                aux = r;
             }
         }
         carpetas.remove(aux);
-        this.getLogedUser().carpetas=carpetas;
+        this.getLogedUser().carpetas = carpetas;
+    }
 
     public void deleteIdea(User.Idea i){
         ArrayList<User.Idea> ideas = (ArrayList<User.Idea>)this.getIdeas();
