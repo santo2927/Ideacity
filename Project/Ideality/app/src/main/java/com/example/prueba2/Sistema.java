@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.Settings;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -390,7 +391,7 @@ public class Sistema implements Serializable {
     private static Sistema instancia = null;
 
     private User.Carpeta selectedFolder=null;
-    private HashMap<String, User> usuarios;
+    public HashMap<String, User> usuarios;
     private static Saver sb=null;
     private HashMap<Integer,String> etiquetas;
 
@@ -457,6 +458,23 @@ public class Sistema implements Serializable {
             return true;
         }
         return false;
+    }
+
+    public void updateNombreUsuario(String nombre){
+        String aux= this.loggedUser.getName();
+        if(!nombre.equals("")){
+
+            usuarios.get(aux).nombre=nombre;
+            User u = usuarios.remove(aux);
+            usuarios.put(nombre,u);
+
+        }
+    }
+
+    public void updateContraseñaUsuario(String contraseña){
+        if(!contraseña.equals("")){
+            usuarios.get(this.loggedUser.nombre).contraseña=contraseña;
+        }
     }
 
     private Integer getEtiqueta(String s){

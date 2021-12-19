@@ -166,6 +166,11 @@ public class GestorIdeas extends AppCompatActivity {
             case R.id.BotonAyuda:
                 setContentView(R.layout.activity_ayuda);
                 break;
+            case R.id.BotonPerfil:
+                x= new Intent(this, ActualizarInfo.class);
+                startActivity(x);
+                break;
+
         }
         return super.onOptionsItemSelected(opcion_menu);
     }

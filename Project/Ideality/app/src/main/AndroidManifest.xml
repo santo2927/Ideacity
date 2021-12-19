@@ -36,6 +36,7 @@
         <activity android:name=".editarIdea" />
         <activity android:name=".DeleteFolder"/>
         <activity android:name=".SelectDeleteIdeas"/>
+        <activity android:name=".ActualizarInfo"/>
     </application>
 
 </manifest>

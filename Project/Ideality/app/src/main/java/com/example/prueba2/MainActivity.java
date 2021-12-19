@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         sv=new Saver(getSharedPreferences("Ideality",Context.MODE_PRIVATE));
         Sistema.setSaver(sv);
         s=Sistema.getSistema();
+        s.logOut();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         botones();
